@@ -35,7 +35,7 @@
   "nativescript": {
     "id": "org.nativescript.futPacks",
     "tns-android": {
-      "version": "2.1.1"
+      "version": "2.3.0"
     }
   },
   "dependencies": {

@@ -43,7 +43,7 @@ export class SideDrawer implements OnInit {
     private drawer: Drawer.RadSideDrawerComponent
     
     ngAfterViewInit() {
-
+        
     }
 
     ngOnInit() {
@@ -51,7 +51,7 @@ export class SideDrawer implements OnInit {
     }
 
     public onLoaded(args) {
-
+        
         this.drawerComponent.drawerLocation = 'bottom'
 
         let circle = this._page.getViewById('circle-drawer')
@@ -59,6 +59,7 @@ export class SideDrawer implements OnInit {
                 scale: { x: 2.5, y: 2.5 },
                 duration: 100
             })
+
     }
 
     public get currentNotification(): string {

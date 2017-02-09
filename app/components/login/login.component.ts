@@ -130,6 +130,7 @@ constructor (private _router        : Router,
                     this.modalService.showModal( ListPicker, modalOptions )
                         .then( ( res ) => {
                             console.log('MODAL::::', res)
+                            this._router.navigate(['/main'])
                         } )
 
                 // var factoryFunc = () => {

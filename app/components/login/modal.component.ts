@@ -20,7 +20,7 @@ const updateQueryStringParameter = (uri, key, value) => {
         }
     }
 
-let http: Http
+let http: Http, router: Router, page:Page
 
 @Component({
   selector: "modal-content",
@@ -41,7 +41,9 @@ export class ListPicker implements OnInit {
                   private _http: Http,
                   private _router: Router ) {
 
-        http = this._http
+        http    = this._http
+        router  = this._router
+        page    = this._page
         this.url = LocalStorage.getString('webView-url')
         console.log('WEB VIEW CONSTRUCTOR::::::', this.url);
 
@@ -50,10 +52,13 @@ export class ListPicker implements OnInit {
     ngOnInit () {
         this.webView =  <WebView> this._page.getViewById('oauthWebView')
         this.webView.on(WebView.loadStartedEvent, this.callback);
+        this.webView.on(WebView.unloadedEvent, ( data ) => {
+            console.log('UNLOADED MODAL :::::', data)
+        })
     }
 
     public close ( result: string ) {
-      this.params.closeCallback( result );
+      this.params.closeCallback( 'closing...' );
     }
 
     private callback (args: LoadEventData) : void {
@@ -75,7 +80,8 @@ export class ListPicker implements OnInit {
                         if ( result.status === 200 ) {
                             let token = json.Token
                             console.log('TOKEN::::', token)
-                            this._router.navigate(['/main'])
+                            console.log('ROUTER::::', router)
+                            page.closeModal()
                         }
                     } )
             }

@@ -30,7 +30,7 @@ let http: Http, router: Router, page:Page
   providers: [ LoginService ]
 })
 
-export class ListPicker implements OnInit {
+export class SocialOauthModal implements OnInit {
 
     public webView: WebView
     public url: string = LocalStorage.getString('webView-url')
@@ -45,7 +45,6 @@ export class ListPicker implements OnInit {
         router  = this._router
         page    = this._page
         this.url = LocalStorage.getString('webView-url')
-        console.log('WEB VIEW CONSTRUCTOR::::::', this.url);
 
     }
 
@@ -53,7 +52,6 @@ export class ListPicker implements OnInit {
         this.webView =  <WebView> this._page.getViewById('oauthWebView')
         this.webView.on(WebView.loadStartedEvent, this.callback);
         this.webView.on(WebView.unloadedEvent, ( data ) => {
-            console.log('UNLOADED MODAL :::::', data)
         })
     }
 
@@ -62,7 +60,6 @@ export class ListPicker implements OnInit {
     }
 
     private callback (args: LoadEventData) : void {
-            console.log("loadFinishedEvent called", args)
             let decodedUrl = args.url
 
             if (  args.url.indexOf('tradepackers.asuramedia.com') !== -1 &&
@@ -79,8 +76,6 @@ export class ListPicker implements OnInit {
                         const json = result.json()
                         if ( result.status === 200 ) {
                             let token = json.Token
-                            console.log('TOKEN::::', token)
-                            console.log('ROUTER::::', router)
                             page.closeModal()
                         }
                     } )

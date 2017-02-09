@@ -16,7 +16,7 @@ import { WebView, LoadEventData } from 'ui/web-view'
 import * as Rx from 'rxjs/Rx'
 import * as utils from 'utils/utils'
 import * as Modal from "nativescript-angular/modal-dialog"
-import { ListPicker } from './modal.component'
+import { SocialOauthModal } from './modal.component'
 import * as LocalStorage from 'application-settings'
 
 const modalOptions: Modal.ModalDialogOptions = {
@@ -59,13 +59,9 @@ constructor (private _router        : Router,
         this.widthDIPs = screen.mainScreen.widthDIPs
         const usernameView = <TextField> this.usernameView.nativeElement
         const passwordView = <TextField> this.passwordView.nativeElement
-        setHintColor( { view: usernameView, color: new Color('#abaeb3') } )
-        setHintColor( { view: passwordView, color: new Color('#abaeb3') } )
+        setHintColor( { view: usernameView, color: new Color('#fff') } )
+        setHintColor( { view: passwordView, color: new Color('#fff') } )
 
-    }
-    
-    showModal () : Promise<any> {
-        return this.modalService.showModal( ListPicker, modalOptions )
     }
 
     login () : void {
@@ -115,8 +111,6 @@ constructor (private _router        : Router,
         const redirectUrl = `${this.baseUrl}social/${provider}`
         return this._http.get( redirectUrl )
             .catch( (ex) => {
-                console.log( 'ERROR::::', ex ) 
-                console.log(JSON.stringify(ex))
                 return ex
             } )
             .map( ( result: Response ) => {
@@ -125,26 +119,11 @@ constructor (private _router        : Router,
                     const data = result.json()
                     this._loginService.webViewUrl = decodeURIComponent( data.url )
                     LocalStorage.setString('webView-url', decodeURIComponent(data.url))
-                    console.log( 'LOGIN SERVICE URL::::', this._loginService.webViewUrl )
                     
-                    this.modalService.showModal( ListPicker, modalOptions )
+                    this.modalService.showModal( SocialOauthModal, modalOptions )
                         .then( ( res ) => {
-                            console.log('MODAL::::', res)
                             this._router.navigate(['/main'])
                         } )
-
-                // var factoryFunc = () => {
-                //     console.log( 'FACTORY FUNC::::', data.url ); 
-                //     webView.url = decodeURIComponent(data.url);
-                //     webView.notifyPropertyChange('url', data.url);
-                //     webView.on(WebView.loadStartedEvent, callback);
-                //     var page: Page = new pageModule.Page();
-                //     this._page.content = webView;
-                //     return this._page;
-                // };
-
-                //     frameModule.topmost().navigate(factoryFunc);
-
                 }
             } )
 

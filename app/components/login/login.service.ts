@@ -12,7 +12,7 @@ export class LoginService {
     public webViewUrl
     
     constructor (private _http : Http) {
-        console.log('LOGIN SERVICE NEW::::', this.webViewUrl)
+        
     }
     
     authenticate (dto : UserFactory) : Rx.Observable<{}> {

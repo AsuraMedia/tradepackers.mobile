@@ -8,9 +8,11 @@ export class LoginService {
     
     private baseUrl : string = 'http://192.168.56.1:9000'
     private url : string
+
+    public webViewUrl
     
     constructor (private _http : Http) {
-        
+        console.log('LOGIN SERVICE NEW::::', this.webViewUrl)
     }
     
     authenticate (dto : UserFactory) : Rx.Observable<{}> {

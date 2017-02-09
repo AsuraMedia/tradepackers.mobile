@@ -1,4 +1,4 @@
-import {Inject, Injectable, Component, OnInit, ViewChild} from '@angular/core'
+import { Inject, Injectable, Component, OnInit, ViewChild } from '@angular/core'
 import {SideDrawer} from '../side-drawer/side.drawer.component'
 import {Router} from "@angular/router"
 import {Page} from 'ui/page'

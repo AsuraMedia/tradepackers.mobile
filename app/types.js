@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var SignupDTO = (function () {
     function SignupDTO() {
     }
-    SignupDTO = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], SignupDTO);
     return SignupDTO;
 }());
+SignupDTO = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], SignupDTO);
 exports.SignupDTO = SignupDTO;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ0eXBlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEscUJBQWlDLGVBRWpDLENBQUMsQ0FGK0M7QUFZaEQ7SUFFSTtJQUVBLENBQUM7SUFMTDtRQUFDLGlCQUFVLEVBQUU7O2lCQUFBO0lBWWIsZ0JBQUM7QUFBRCxDQUFDLEFBWEQsSUFXQztBQVhZLGlCQUFTLFlBV3JCLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ0eXBlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsc0NBQWdEO0FBWWhELElBQWEsU0FBUztJQUVsQjtJQUVBLENBQUM7SUFPTCxnQkFBQztBQUFELENBQUMsQUFYRCxJQVdDO0FBWFksU0FBUztJQURyQixpQkFBVSxFQUFFOztHQUNBLFNBQVMsQ0FXckI7QUFYWSw4QkFBUyJ9

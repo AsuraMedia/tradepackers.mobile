@@ -15,15 +15,21 @@ var webViewModule = require("ui/web-view");
 import { WebView, LoadEventData } from 'ui/web-view'
 import * as Rx from 'rxjs/Rx'
 import * as utils from 'utils/utils'
-import { ModalDialogParams } from 'nativescript-angular/directives/dialogs'
+import * as Modal from "nativescript-angular/modal-dialog"
+import { ListPicker } from './modal.component'
+import * as LocalStorage from 'application-settings'
+
+const modalOptions: Modal.ModalDialogOptions = {
+    fullscreen: false
+}
 
 @Component({
     moduleId: module.id,
     selector: 'login',
     templateUrl: './login.template.html', 
     styleUrls: ['./login.css'],
-    directives: [],
-    providers: [LoginService]
+    directives: [ Modal.ModalDialogHost ],
+    providers: [ LoginService, Modal.ModalDialogService ]
 })
 
 export class LoginComponent implements OnInit {
@@ -39,12 +45,13 @@ export class LoginComponent implements OnInit {
     
 constructor (private _router        : Router, 
              private _page          : Page, 
-             private _loginService  : LoginService,
+             @Inject(LoginService) private _loginService  : LoginService,
              public _userFactory    : UserFactory,
-             private _http          : Http) {
+             private _http          : Http,
+             private modalService   : Modal.ModalDialogService) {
                      
         this._page.actionBarHidden = true
-        
+
     }
     
     ngOnInit () {
@@ -54,8 +61,13 @@ constructor (private _router        : Router,
         const passwordView = <TextField> this.passwordView.nativeElement
         setHintColor( { view: usernameView, color: new Color('#abaeb3') } )
         setHintColor( { view: passwordView, color: new Color('#abaeb3') } )
+
     }
     
+    showModal () : Promise<any> {
+        return this.modalService.showModal( ListPicker, modalOptions )
+    }
+
     login () : void {
 
             this._page.animate({
@@ -89,76 +101,52 @@ constructor (private _router        : Router,
                     })
                 })
                 .then(() => {
+
                     this.getSocialAuthUrl(provider)
                         .subscribe((response: Response) => {
                             console.log(response)
                         })
+
                 })
     }
 
     public getSocialAuthUrl ( provider: string ) : any {
 
-        let webView: WebView = new webViewModule.WebView();
-
-        const http = this._http
-        const callback = (args: LoadEventData) => {
-            console.log("loadFinishedEvent called", args)
-            let decodedUrl = args.url
-
-            if (  args.url.indexOf('tradepackers.asuramedia.com') !== -1 &&
-                  args.url.indexOf('redirect_uri') === -1 ) {
-                
-                decodedUrl = decodedUrl.replace('#_=_', '')
-                decodedUrl = this.updateQueryStringParameter( decodedUrl, 'getToken', 'please' )
-
-                http.get( decodedUrl )
-                    .catch( (ex) => {
-                        return ex
-                    } )
-                    .subscribe( ( result: Response ) => {
-                        const json = result.json()
-                        if ( result.status === 200 ) {
-                            let token = json.Token
-                            console.log('TOKEN::::', token)
-                            utils.openUrl('TradePackersMobile')
-                        }
-                    } )
-            }
-        }
-
         const redirectUrl = `${this.baseUrl}social/${provider}`
         return this._http.get( redirectUrl )
             .catch( (ex) => {
+                console.log( 'ERROR::::', ex ) 
                 console.log(JSON.stringify(ex))
                 return ex
             } )
             .map( ( result: Response ) => {
                 if ( result.status === 200 ) {
-                    const data = result.json()
-                var factoryFunc = () => {
-                    webView.url = decodeURIComponent(data.url);
-                    webView.on(WebView.loadStartedEvent, callback);
-                    var page: Page = new pageModule.Page();
-                    this._page.content = webView;
-                    return this._page;
-                };
 
-                    frameModule.topmost().navigate(factoryFunc);
+                    const data = result.json()
+                    this._loginService.webViewUrl = decodeURIComponent( data.url )
+                    LocalStorage.setString('webView-url', decodeURIComponent(data.url))
+                    console.log( 'LOGIN SERVICE URL::::', this._loginService.webViewUrl )
+                    
+                    this.modalService.showModal( ListPicker, modalOptions )
+                        .then( ( res ) => {
+                            console.log('MODAL::::', res)
+                        } )
+
+                // var factoryFunc = () => {
+                //     console.log( 'FACTORY FUNC::::', data.url ); 
+                //     webView.url = decodeURIComponent(data.url);
+                //     webView.notifyPropertyChange('url', data.url);
+                //     webView.on(WebView.loadStartedEvent, callback);
+                //     var page: Page = new pageModule.Page();
+                //     this._page.content = webView;
+                //     return this._page;
+                // };
+
+                //     frameModule.topmost().navigate(factoryFunc);
 
                 }
             } )
 
             
-    }
-
-    private updateQueryStringParameter(uri, key, value) {
-        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-        if (uri.match(re)) {
-            return uri.replace(re, '$1' + key + "=" + value + '$2');
-        }
-        else {
-            return uri + separator + key + "=" + value;
-        }
     }
 }

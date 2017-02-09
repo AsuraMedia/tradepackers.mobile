@@ -8,12 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var LoginService = (function () {
     function LoginService(_http) {
         this._http = _http;
         this.baseUrl = 'http://192.168.56.1:9000';
+        console.log('LOGIN SERVICE NEW::::', this.webViewUrl);
     }
     LoginService.prototype.authenticate = function (dto) {
         var loginDTO = {
@@ -23,11 +24,11 @@ var LoginService = (function () {
         this.url = this.baseUrl + '/login';
         return this._http.post(this.url, loginDTO);
     };
-    LoginService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], LoginService);
     return LoginService;
 }());
+LoginService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], LoginService);
 exports.LoginService = LoginService;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9naW4uc2VydmljZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImxvZ2luLnNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLHFCQUFpQyxlQUNqQyxDQUFDLENBRCtDO0FBQ2hELHFCQUE2QixlQUM3QixDQUFDLENBRDJDO0FBSzVDO0lBS0ksc0JBQXFCLEtBQVk7UUFBWixVQUFLLEdBQUwsS0FBSyxDQUFPO1FBSHpCLFlBQU8sR0FBWSwwQkFBMEIsQ0FBQTtJQUtyRCxDQUFDO0lBRUQsbUNBQVksR0FBWixVQUFjLEdBQWlCO1FBRTNCLElBQUksUUFBUSxHQUFHO1lBQ1gsS0FBSyxFQUFFLEdBQUcsQ0FBQyxLQUFLO1lBQ2hCLFFBQVEsRUFBRSxHQUFHLENBQUMsUUFBUTtTQUN6QixDQUFBO1FBRUQsSUFBSSxDQUFDLEdBQUcsR0FBRyxJQUFJLENBQUMsT0FBTyxHQUFHLFFBQVEsQ0FBQTtRQUNsQyxNQUFNLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLEdBQUcsRUFBRSxRQUFRLENBQUMsQ0FBQTtJQUU5QyxDQUFDO0lBcEJMO1FBQUMsaUJBQVUsRUFBRTs7b0JBQUE7SUFzQmIsbUJBQUM7QUFBRCxDQUFDLEFBckJELElBcUJDO0FBckJZLG9CQUFZLGVBcUJ4QixDQUFBIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9naW4uc2VydmljZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImxvZ2luLnNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLHNDQUFnRDtBQUNoRCxzQ0FBNEM7QUFLNUMsSUFBYSxZQUFZO0lBT3JCLHNCQUFxQixLQUFZO1FBQVosVUFBSyxHQUFMLEtBQUssQ0FBTztRQUx6QixZQUFPLEdBQVksMEJBQTBCLENBQUE7UUFNakQsT0FBTyxDQUFDLEdBQUcsQ0FBQyx1QkFBdUIsRUFBRSxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUE7SUFDekQsQ0FBQztJQUVELG1DQUFZLEdBQVosVUFBYyxHQUFpQjtRQUUzQixJQUFJLFFBQVEsR0FBRztZQUNYLEtBQUssRUFBRSxHQUFHLENBQUMsS0FBSztZQUNoQixRQUFRLEVBQUUsR0FBRyxDQUFDLFFBQVE7U0FDekIsQ0FBQTtRQUVELElBQUksQ0FBQyxHQUFHLEdBQUcsSUFBSSxDQUFDLE9BQU8sR0FBRyxRQUFRLENBQUE7UUFDbEMsTUFBTSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsUUFBUSxDQUFDLENBQUE7SUFFOUMsQ0FBQztJQUVMLG1CQUFDO0FBQUQsQ0FBQyxBQXZCRCxJQXVCQztBQXZCWSxZQUFZO0lBRHhCLGlCQUFVLEVBQUU7cUNBUW9CLFdBQUk7R0FQeEIsWUFBWSxDQXVCeEI7QUF2Qlksb0NBQVkifQ==

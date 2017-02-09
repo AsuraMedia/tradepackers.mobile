@@ -28,15 +28,15 @@ export class UserService {
     public loggedIn () : User {
         
         return {
-            id: 10,
-            email: 'odiaz.dw@gmail.com',
+            id: 0,
+            email: '',
             password: '',
             passwordRepeat: '',
-            firstName: 'Oscar',
-            lastName: 'Diaz',
-            userName: 'think blue',
+            firstName: '',
+            lastName: '',
+            userName: '',
             avatar: 'res://avatar2',
-            coins: 500000
+            coins: 0
         }
         
     }

@@ -18,14 +18,14 @@
 
             <StackLayout row="2" col="0" class="credentials" horizontalAlignment="center">
 
-                <TextField [(ngModel)]="_userFactory.email"
+                <TextField #emailTxt [(ngModel)]="_userFactory.email"
                             hint="email address"></TextField>
-                <TextField [(ngModel)]="_userFactory.userName"
+                <TextField #usernameTxt [(ngModel)]="_userFactory.userName"
                             hint="username"></TextField>
-                <TextField [(ngModel)]="_userFactory.password"
+                <TextField #passwordTxt [(ngModel)]="_userFactory.password"
                             secure="true"
                             hint="password"></TextField>
-                <TextField [(ngModel)]="_userFactory.passwordRepeat"
+                <TextField #passwordRepeatTxt [(ngModel)]="_userFactory.passwordRepeat"
                             secure="true"
                             hint="password again"></TextField>
             </StackLayout>

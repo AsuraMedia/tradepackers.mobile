@@ -52,11 +52,8 @@ export class SocialOauthModal implements OnInit {
         this.webView =  <WebView> this._page.getViewById('oauthWebView')
         this.webView.on(WebView.loadStartedEvent, this.callback);
         this.webView.on(WebView.unloadedEvent, ( data ) => {
-        })
-    }
 
-    public close ( result: string ) {
-      this.params.closeCallback( 'closing...' );
+        })
     }
 
     private callback (args: LoadEventData) : void {
@@ -75,7 +72,8 @@ export class SocialOauthModal implements OnInit {
                     .subscribe( ( result: Response ) => {
                         const json = result.json()
                         if ( result.status === 200 ) {
-                            let token = json.Token
+                            const token = json.Token
+                            LocalStorage.setString( 'oauth-token', token )
                             page.closeModal()
                         }
                     } )

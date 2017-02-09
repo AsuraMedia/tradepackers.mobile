@@ -51,6 +51,7 @@ constructor (private _router        : Router,
              private modalService   : Modal.ModalDialogService) {
                      
         this._page.actionBarHidden = true
+        this._page.on("loaded", this.onLoaded, this)
 
     }
     
@@ -62,6 +63,13 @@ constructor (private _router        : Router,
         setHintColor( { view: usernameView, color: new Color('#fff') } )
         setHintColor( { view: passwordView, color: new Color('#fff') } )
 
+    }
+
+    public onLoaded(args) {
+        const usernameView = <TextField> this.usernameView.nativeElement
+        const passwordView = <TextField> this.passwordView.nativeElement
+        setHintColor( { view: usernameView, color: new Color('#fff') } )
+        setHintColor( { view: passwordView, color: new Color('#fff') } )
     }
 
     login () : void {
@@ -122,7 +130,10 @@ constructor (private _router        : Router,
                     
                     this.modalService.showModal( SocialOauthModal, modalOptions )
                         .then( ( res ) => {
-                            this._router.navigate(['/main'])
+                            const token = LocalStorage.getString('oauth-token')
+                            if ( token !== undefined ) {
+                                this._router.navigate(['/main'])
+                            }
                         } )
                 }
             } )

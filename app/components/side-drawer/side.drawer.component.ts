@@ -10,6 +10,7 @@ import {SideDrawerLocation, RadSideDrawer} from 'nativescript-telerik-ui/sidedra
 import * as transitions from 'nativescript-telerik-ui/sidedrawer'
 import {MenuOptionComponent} from "../menu-option/menu.option.component"
 import {UserInfoComponent} from '../user-info/user.info.component'
+import * as Modal from "nativescript-angular/modal-dialog"
 
 @Component({
     moduleId: module.id,
@@ -18,7 +19,8 @@ import {UserInfoComponent} from '../user-info/user.info.component'
             NgIf,
             MenuOptionComponent, 
             UserInfoComponent,
-            ROUTER_DIRECTIVES
+            ROUTER_DIRECTIVES,
+            Modal.ModalDialogHost
         ],
     templateUrl: './side.drawer.template.html',
     styleUrls: ['side.drawer.css'],

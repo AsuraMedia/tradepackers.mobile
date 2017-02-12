@@ -12,6 +12,7 @@ import { EventsService } from '../../util/event.service'
 let http: Http, router: Router, page:Page
 
 const handleEvents  = ( event: any ) => {
+    console.log('LOADING HANDLE EVENT', event)
     if ( event === 'close' ) {
         page.closeModal()
     }

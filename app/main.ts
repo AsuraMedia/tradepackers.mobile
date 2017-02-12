@@ -7,12 +7,14 @@ import {nsProvideRouter} from 'nativescript-angular/router'
 import {APP_ROUTER_PROVIDERS} from "./app.routes"
 import {AppComponent} from './app.component'
 import { ModalDialogService } from 'nativescript-angular/modal-dialog'
+import { LoadingModalComponent } from './components/loading-modal/loadingModal.component'
 
 enableProdMode()
 
 nativeScriptBootstrap(AppComponent, [
     HTTP_PROVIDERS,
     SIDEDRAWER_PROVIDERS,
-    APP_ROUTER_PROVIDERS
+    APP_ROUTER_PROVIDERS,
+    LoadingModalComponent
     
 ], { startPageActionBarHidden: true })

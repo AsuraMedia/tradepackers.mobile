@@ -1,4 +1,4 @@
-import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef } from '@angular/core'
+import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core'
 import {Router} from "@angular/router"
 import { Page } from 'ui/page'
 import { Color } from 'color'
@@ -17,11 +17,15 @@ import * as Rx from 'rxjs/Rx'
 import * as utils from 'utils/utils'
 import * as Modal from "nativescript-angular/modal-dialog"
 import { SocialOauthModal } from './modal.component'
+import { LoadingModalComponent } from '../loading-modal/loadingModal.component'
 import * as LocalStorage from 'application-settings'
+import { EventsService } from '../../util/event.service'
 
 const modalOptions: Modal.ModalDialogOptions = {
     fullscreen: false
 }
+
+let page: Page
 
 @Component({
     moduleId: module.id,
@@ -29,7 +33,7 @@ const modalOptions: Modal.ModalDialogOptions = {
     templateUrl: './login.template.html', 
     styleUrls: ['./login.css'],
     directives: [ Modal.ModalDialogHost ],
-    providers: [ LoginService, Modal.ModalDialogService ]
+    providers: [ LoginService, Modal.ModalDialogService, EventsService ]
 })
 
 export class LoginComponent implements OnInit {
@@ -48,10 +52,13 @@ constructor (private _router        : Router,
              @Inject(LoginService) private _loginService  : LoginService,
              public _userFactory    : UserFactory,
              private _http          : Http,
-             private modalService   : Modal.ModalDialogService) {
-                     
+             private modalService   : Modal.ModalDialogService,
+             private eventsService  : EventsService ) {
+
+        page = this._page                     
         this._page.actionBarHidden = true
         this._page.on("loaded", this.onLoaded, this)
+        LoadingModalComponent.registerListeners( eventsService )
 
     }
     
@@ -92,6 +99,13 @@ constructor (private _router        : Router,
     }
 
     socialAuth ( provider: string ) : void {
+
+        
+         this.modalService.showModal( LoadingModalComponent, modalOptions )
+            .then( ( res ) => {
+                
+            } )
+
         let social = this._page.getViewById(provider)
             social.animate({
                 scale: { x: 1.2, y: 1.2 },
@@ -124,10 +138,11 @@ constructor (private _router        : Router,
             .map( ( result: Response ) => {
                 if ( result.status === 200 ) {
 
+                    this.eventsService.broadcast( 'loadingModalEvent', 'close' )
                     const data = result.json()
                     this._loginService.webViewUrl = decodeURIComponent( data.url )
                     LocalStorage.setString('webView-url', decodeURIComponent(data.url))
-                    
+
                     this.modalService.showModal( SocialOauthModal, modalOptions )
                         .then( ( res ) => {
                             const token = LocalStorage.getString('oauth-token')

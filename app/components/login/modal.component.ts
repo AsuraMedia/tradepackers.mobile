@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, NgZone, Inject } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild, NgZone, Inject, EventEmitter } from "@angular/core";
 import {ModalDialogParams} from "nativescript-angular/modal-dialog";
 import {Page} from "ui/page";
 import {ListView} from "ui/list-view";
@@ -45,10 +45,11 @@ export class SocialOauthModal implements OnInit {
         router  = this._router
         page    = this._page
         this.url = LocalStorage.getString('webView-url')
-
+    
     }
 
     ngOnInit () {
+
         this.webView =  <WebView> this._page.getViewById('oauthWebView')
         this.webView.on(WebView.loadStartedEvent, this.callback);
         this.webView.on(WebView.unloadedEvent, ( data ) => {

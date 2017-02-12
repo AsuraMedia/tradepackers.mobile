@@ -20,7 +20,7 @@ const handleEvents  = ( event: any ) => {
 @Component({
   selector: "loading-modal",
   template: `<StackLayout id="loadingModal">
-                <label text="LOADING..."></label> 
+                <label text="CARGANDO..."></label> 
             </StackLayout>`,
   providers: [ EventsService ]
 })

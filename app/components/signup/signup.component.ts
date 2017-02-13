@@ -50,10 +50,10 @@ export class SignupComponent implements OnInit {
         const usernameTxt = <TextField> this.usernameTxt.nativeElement
         const passwordTxt = <TextField> this.passwordTxt.nativeElement
         const passwordRepeatTxt = <TextField> this.passwordRepeatTxt.nativeElement
-        setHintColor( { view: emailTxt, color: new Color('#fff') } )
-        setHintColor( { view: usernameTxt, color: new Color('#fff') } )
-        setHintColor( { view: passwordTxt, color: new Color('#fff') } )
-        setHintColor( { view: passwordRepeatTxt, color: new Color('#fff') } )
+        setHintColor( { view: emailTxt, color: new Color('#9f9f9f') } )
+        setHintColor( { view: usernameTxt, color: new Color('#9f9f9f') } )
+        setHintColor( { view: passwordTxt, color: new Color('#9f9f9f') } )
+        setHintColor( { view: passwordRepeatTxt, color: new Color('#9f9f9f') } )
     }
     
     register () : void {

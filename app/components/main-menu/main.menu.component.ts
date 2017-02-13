@@ -12,7 +12,7 @@ import { EventsService } from '../../util/event.service'
     template: 
         `   <side-drawer>
                 <StackLayout style="width:100%;height:80%;">
-                    <label text="I am the main menu!" 
+                    <label text="Menu principal" 
                             horizontalAlignment="center" 
                             style="color:snow">
                     </label>
@@ -53,12 +53,7 @@ export class MainMenuComponent implements OnInit, AfterViewInit  {
 
     public getMainInfo (): void {
         
-        setTimeout( () => {
-            this.modalService.showModal( LoadingModalComponent, {
-                fullscreen: false 
-            } )
-            .then( () => { console.log('loading closed...') } )
-        }, 0);
+        LoadingModalComponent.showModal( this.modalService )
 
         setTimeout( () => {
             this.eventsService.broadcast( 'loadingModalEvent', 'close' )

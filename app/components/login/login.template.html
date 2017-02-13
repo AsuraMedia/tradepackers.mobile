@@ -6,15 +6,15 @@
                     height="auto">
             
             <StackLayout row="0" col="0" class="logo" horizontalAlignment="center">
-                <img src="res://tplogo" width="75" height="75"/>
+                <img src="res://fedefutlogo" width="125" height="125"/>
             </StackLayout> 
             
             <StackLayout row="2" col="0" class="credentials" horizontalAlignment="center">
                 <TextField #usernameTxt [(ngModel)]="_userFactory.email"
-                            hint="email address"></TextField>
+                            hint="correo electronico"></TextField>
                 <TextField #passwordTxt [(ngModel)]="_userFactory.password"
                             secure="true"
-                            hint="password"></TextField>
+                            hint="contraseña"></TextField>
             </StackLayout>
             
             <StackLayout row="3" col="0" horizontalAlignment="center">
@@ -43,8 +43,8 @@
             <StackLayout row="4" col="0" horizontalAlignment="center">
                 <WrapLayout>
                     <StackLayout class="signup">
-                        <button text="log in" class="login-btn" (tap)="login()"></button>
-                        <button text="sign up" class="signup-btn" (tap)="signup()"></button>
+                        <button text="ingresar" class="login-btn" (tap)="login()"></button>
+                        <button text="registrarse" class="signup-btn" (tap)="signup()"></button>
                     </StackLayout>
                     <StackLayout orientation="vertical" modal-dialog-host>
                     </StackLayout>

@@ -25,10 +25,10 @@ export class Errors {
 
     let signupDto : SignupDTO = new SignupDTO()
 
-        this.collection.set('email', 'Invalid email address.')
-        this.collection.set('password', 'Password must be at least 6 characters.')
-        this.collection.set('passwordRepeat', "Password doesn't match.")
-        this.collection.set('username', 'Username must be at least 4 characters.')
+        this.collection.set('email', 'Correo electronico invalido.')
+        this.collection.set('password', 'Contraseña almenos de 6 caracteres.')
+        this.collection.set('passwordRepeat', "Constraseña no coincide.")
+        this.collection.set('username', 'Usuario debe tener almenos 4 caracteres.')
 
     }
 

@@ -67,16 +67,16 @@ constructor (private _router        : Router,
         this.widthDIPs = screen.mainScreen.widthDIPs
         const usernameView = <TextField> this.usernameView.nativeElement
         const passwordView = <TextField> this.passwordView.nativeElement
-        setHintColor( { view: usernameView, color: new Color('#fff') } )
-        setHintColor( { view: passwordView, color: new Color('#fff') } )
+        setHintColor( { view: usernameView, color: new Color('#9f9f9f') } )
+        setHintColor( { view: passwordView, color: new Color('#9f9f9f') } )
 
     }
 
     public onLoaded(args) {
         const usernameView = <TextField> this.usernameView.nativeElement
         const passwordView = <TextField> this.passwordView.nativeElement
-        setHintColor( { view: usernameView, color: new Color('#fff') } )
-        setHintColor( { view: passwordView, color: new Color('#fff') } )
+        setHintColor( { view: usernameView, color: new Color('#9f9f9f') } )
+        setHintColor( { view: passwordView, color: new Color('#9f9f9f') } )
     }
 
     login () : void {

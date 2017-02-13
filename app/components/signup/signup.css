@@ -10,14 +10,14 @@
 .logo {
     font-size: 20;
     font-weight: bold;
-    font-family: 'proximanova-reg';
+    font-family: 'conthrax-sb';
     color: snow;
 }
 
 .credentials {
-    font-size: 16;
+    font-size: 12;
     font-weight: 400;
-    font-family: 'proximanova-reg';
+    font-family: 'conthrax-sb';
     color: snow;
     width: 200;
 }
@@ -51,9 +51,9 @@
 .register-btn {
     font-size: 14;
     font-weight: bold;
-    font-family: 'proximanova-reg';
-    color: #404040;
-    background-color: #FCDC3B;
+    font-family: 'conthrax-sb';
+    color: snow;
+    background-color: #94c949;
     border-radius: 0 !important;
     width: 200;
 }
@@ -61,18 +61,13 @@
 .cancel-btn {
     font-size: 14;
     font-weight: bold;
-    font-family: 'proximanova-reg';
-    color: #404040;
-    background-color: snow;
+    font-family: 'conthrax-sb';
+    color: snow;
+    background-color: #3f71b7;
     border-radius: 0 !important;
     width: 200;
 }
 
 .auth-loading {
-    color: #FFFF00;
-}
-
-label {
-    font-family: 'proximanova-reg';
-    color: snow;
+    color: #94c949;
 }

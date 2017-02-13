@@ -1,0 +1,40 @@
+.menu-settings {
+  background-color: transparent;
+}
+
+.avatar {
+  background-color: transparent;
+  margin: 0 35 30 0;
+  width: 50;
+  height: 50;
+}
+
+.user-info {
+  font-family: 'proximanova-reg';
+  font-size: 13;
+  font-weight: 300;
+  text-align: center;
+  color: snow;
+  background-color: transparent;
+  padding: 50 32 0 0;
+}
+
+.icon {
+  font-size: 16;
+  font-weight: 600;
+  color: gold;
+  padding-top: 15;
+}
+
+.fa .icon {
+  font-family: 'FontAwesome';
+}
+
+.fa .coins {
+  font-family: 'proximanova-reg';
+  font-size: 16;
+  font-weight: 400;
+  color: gold;
+  background-color: transparent;
+  padding: 15 35 5 15;
+}

@@ -1,0 +1,52 @@
+StackLayout .menu-options {
+  background-color: snow;
+}
+
+.selected {
+  color: #e4ba4e;
+}
+.open-drawer {
+    text-align: left;
+}
+
+.fa-menu-options {
+  background-color: transparent;
+  font-family: 'proximanova-reg';
+  font-size: 18;
+  width: 100%;
+  height: 100%;
+}
+
+.fa-menu-options AbsoluteLayout label .fa {
+  font-family: 'FontAwesome';
+  font-size: 18;
+  color: black;
+}
+
+.fa-menu-options AbsoluteLayout label .menu-option {
+  padding-bottom: 10;
+  padding-left: 10;
+  font-family: 'proximanova-reg' !important;
+  font-size: 22;
+  color: black !important;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.option-container {
+  padding-top: 0;
+  padding-bottom: 10;
+  border-color: black;
+  border-width: 0;
+  width: 100%;
+}
+
+.circle-drawer {
+  font-family: 'FontAwesome';
+  font-size: 18;
+  color: snow;
+}
+
+.drawerSide {
+  height: auto;
+}

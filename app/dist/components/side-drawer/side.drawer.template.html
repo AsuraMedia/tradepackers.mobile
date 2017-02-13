@@ -1,0 +1,28 @@
+<RadSideDrawer #drawer (drawerOpening)="onDrawerOpening()" 
+                        (drawerOpened)="onDrawerOpened()" 
+                        (drawerClosing)="onDrawerClosing()"
+                        (drawerClosed)="onDrawerClosed()">
+    <template drawerSide>
+        <StackLayout class="drawerSide">
+            
+            <user-info></user-info>
+            <menu-options></menu-options>
+            
+        </StackLayout>
+    </template>
+    <template drawerMain>
+        <StackLayout class="body">
+            
+            <ng-content></ng-content>
+
+            <StackLayout style="width:125;height:125;" verticalAlignment="center">
+                <Label id="circle-drawer"
+                       text="&#xf111;"
+                       (tap)="openDrawer()"
+                       horizontalAlignment="center"
+                       left="0" top="0" width="auto" height="auto" class="circle-drawer"></Label>
+            </StackLayout>
+
+        </StackLayout>
+    </template>
+</RadSideDrawer>

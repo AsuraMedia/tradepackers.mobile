@@ -25,10 +25,37 @@ action-bar {
 .fa {
   font-family: 'FontAwesome';
   font-size: 18;
-  color: black;
+  color: lawngreen;
+  padding-left: 20px;
 }
 
 .hr {
   border-width: 1;
   border-color: #d6d6d6;
+}
+
+.continue-btn {
+    font-size: 14;
+    font-weight: bold;
+    font-family: 'conthrax-sb';
+    color: snow;
+    background-color: #94c949;
+    border-radius: 0 !important;
+    width: 200;
+}
+
+.credentials {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
+    width: 200;
+}
+
+.upperCase {
+  font-size: 14;
+  font-weight: 600;
+  font-family: 'conthrax-sb';
+  color: snow !important;
+  width: 200;
 }

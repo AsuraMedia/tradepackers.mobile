@@ -1,0 +1,49 @@
+<!--<WrapLayout class="fa-menu-options" orientation="vertical">
+    <AbsoluteLayout *ngFor="let option of _menuOptions" 
+                    class="option-container"
+                    (tap)="navigate(option)">
+        <Label 
+            [text]="option.icon == 'f11b' ? '&#xf11b;' : 
+                    option.icon == 'f0c0' ? '&#xf0c0;' : 
+                    option.icon == 'f002' ? '&#xf002;' : 
+                    option.icon == 'f09d' ? '&#xf09d;' : 
+                    option.icon == 'f013' ? '&#xf013;' :
+                    option.icon == 'f011' ? '&#xf011;' : ''"
+            left="10" top="10" width="20" height="20" class="fa"></Label>
+        <Label [text]="option.display" 
+                left="40" 
+                top="10" 
+                class="menu-option"></Label>
+    </AbsoluteLayout>
+</WrapLayout>-->
+
+<StackLayout class="">
+    <GridLayout columns="120, 120, 120, *" 
+                rows="100, 100, *" 
+                width="auto" 
+                height="auto"
+                style="border-width:0;border-color: aqua;">
+        
+            <StackLayout row="0" col="0" style="border-width:0;border-color: aqua;">
+                <img id="a1" src="res://avatar2" width="50" height="50" (tap)="goToAvatar('a1')"/>
+            </StackLayout>
+            <StackLayout row="0" col="1" style="border-width:0;border-color: aqua;">
+                <img id="a2" src="res://avatar2" width="50" height="50" (tap)="goToAvatar('a2')"/>
+            </StackLayout>
+            <StackLayout row="0" col="2" style="border-width:0;border-color: aqua;">
+                <img id="a3" src="res://avatar2" width="50" height="50" (tap)="goToAvatar('a3')"/>
+            </StackLayout>
+
+            <StackLayout row="1" col="0" style="border-width:0;border-color: aqua;">
+                <img id="a4" src="res://avatar2" width="50" height="50" (tap)="goToAvatar('a4')"/>
+            </StackLayout>
+            <StackLayout row="1" col="1" style="border-width:0;border-color: aqua;">
+                <img id="a5" src="res://avatar2" width="50" height="50" (tap)="goToAvatar('a5')"/>
+            </StackLayout>
+            <StackLayout row="1" col="2" style="border-width:0;border-color: aqua;">
+                <img id="a6" src="res://avatar2" width="50" height="50" (tap)="goToAvatar('a6')"/>
+            </StackLayout>
+            
+        
+    </GridLayout>
+</StackLayout>

@@ -1,0 +1,72 @@
+.login-container {
+  /*background-color: #565858;*/
+  background-image: url("res://tpbg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 65%;
+}
+
+.logo {
+    font-size: 20;
+    font-weight: bold;
+    font-family: 'conthrax-sb';
+    color: snow;
+}
+
+.credentials {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
+    width: 200;
+}
+
+.agreement {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
+    height: auto;
+}
+
+.login {
+    padding: 5;
+}
+
+.signup {
+    padding: 5;
+}
+
+.login-btn {
+    font-size: 14;
+    font-weight: bold;
+    font-family: 'conthrax-sb';
+    color: snow;
+    background-color: #94c949;
+    border-radius: 0 !important;
+    width: 200;
+}
+
+.signup-btn {
+    font-size: 14;
+    font-weight: bold;
+    font-family: 'conthrax-sb';
+    color: snow;
+    background-color: #3f71b7;
+    border-radius: 0 !important;
+    width: 200;
+}
+
+.auth-loading {
+    color: #FFFF00;
+}
+
+label {
+    font-family: 'conthrax-sb';
+    color: snow;
+}
+
+.social {
+    margin: 5;
+}

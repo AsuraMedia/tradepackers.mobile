@@ -147,7 +147,7 @@ constructor (private _router        : Router,
                         .then( ( res ) => {
                             const token = LocalStorage.getString('oauth-token')
                             if ( token !== undefined ) {
-                                this._router.navigate(['/main'])
+                                this._router.navigate(['/createteam'])
                             }
                         } )
                 }

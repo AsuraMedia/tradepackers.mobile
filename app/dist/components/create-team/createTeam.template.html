@@ -1,0 +1,58 @@
+<StackLayout [height]="heightDIPs" [width]="widthDIPs">
+    <StackLayout class="create-team-container" horizontalAlignment="center">
+        <GridLayout columns="225, *" 
+                    rows="125, 75, 75, 75, 150, *" 
+                    width="auto" +
+                    height="auto">
+            
+            <StackLayout row="0" col="0" class="logo" horizontalAlignment="center">
+                <label text="selecciona tu insignia"></label> 
+            </StackLayout> 
+            
+            <StackLayout row="2" col="0" class="credentials" horizontalAlignment="center">
+                
+            </StackLayout>
+            
+            <StackLayout row="3" col="0" horizontalAlignment="center">
+
+                <GridLayout columns="50, 65, 65, 40, *" 
+                    rows="120, 120, *" 
+                    width="auto" 
+                    height="auto"
+                    style="border-width:0;border-color: aqua;">
+        
+                    <StackLayout row="0" col="1" style="border-width:0;border-color: aqua;">
+                        <img id="facebook" src="res://fb" width="55" height="55" (tap)="socialAuth('facebook')" class="social"/>
+                    </StackLayout>
+                    <StackLayout row="0" col="2" style="border-width:0;border-color: aqua;">
+                        <img id="google" src="res://google" width="55" height="55" (tap)="socialAuth('google')" class="social"/>
+                    </StackLayout>
+                    <StackLayout row="0" col="2" style="border-width:0;border-color: aqua;">
+                        <img id="google" src="res://google" width="55" height="55" (tap)="socialAuth('google')" class="social"/>
+                    </StackLayout>
+
+                </GridLayout>
+
+                <ActivityIndicator
+                    [busy]="isAuthenticating"
+                     class="auth-loading"></ActivityIndicator>
+
+            </StackLayout>
+            
+            <StackLayout row="4" col="0" horizontalAlignment="center">
+                <WrapLayout>
+                    <StackLayout class="signup">
+                        <button text="continuar" class="continue-btn" (tap)="continue()"></button>
+                    </StackLayout>
+                    <StackLayout orientation="vertical" modal-dialog-host>
+                    </StackLayout>
+                </WrapLayout>
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout>
+            
+        </GridLayout>
+
+    </StackLayout>
+</StackLayout>

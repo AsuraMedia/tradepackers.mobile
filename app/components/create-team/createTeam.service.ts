@@ -1,12 +1,13 @@
 import {Inject, Injectable, EventEmitter} from '@angular/core'
 import {Http, Response} from '@angular/http'
 import * as Rx from 'rxjs/Rx'
+import { Badge, Team } from '../../types'
 
 @Injectable()
 export class CreateTeamService {
     
     
-    constructor (private _http : Http) {
+    constructor (private http : Http) {
         
     }
     
@@ -19,22 +20,9 @@ export class CreateTeamService {
             ])
         } )
     }
-    
-}
 
-export class Badge {
-
-    public id: string
-    public name: string
-    public imgUrl: string
-    public col: string
-    public isSelected: boolean = false
-
-    constructor ( id, name, imgUrl, col ) {
-        this.id = id,
-        this.name = name,
-        this.imgUrl = imgUrl
-        this.col = col
+    create ( team: Team ) : Rx.Observable<Response> {
+        return this.http.post('', team)
     }
-
+    
 }

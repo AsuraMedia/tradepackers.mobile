@@ -26,3 +26,32 @@ export class SignupDTO {
 export interface ErrorMessage {
     value : string
 }
+
+export class Badge {
+
+    public id: string
+    public name: string
+    public imgUrl: string
+    public col: string
+    public isSelected: boolean = false
+
+    constructor ( id, name, imgUrl, col ) {
+        this.id = id,
+        this.name = name,
+        this.imgUrl = imgUrl
+        this.col = col
+    }
+
+}
+
+export class Team {
+
+    public badge: Badge
+    public name: string
+    public abr: string
+
+    constructor () {
+        this.badge = new Badge('', '', 'res://badgea', '')
+    }
+
+}

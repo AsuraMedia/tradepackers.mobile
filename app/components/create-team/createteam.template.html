@@ -1,6 +1,6 @@
 <StackLayout class="create-team-container" horizontalAlignment="center">
     <GridLayout columns="225, *" 
-                rows="50, 125, 150, 125, 150, *" 
+                rows="50, 125, 100, 125, 75, *" 
                 width="auto"
                 height="auto">
         
@@ -36,7 +36,7 @@
         <StackLayout row="3" col="0" class="upperCase">
             <img id="badge.id" [src]="team.badge.imgUrl" width="75" height="75" class="social"/>
             <label [text]="team.name"></label>
-            <label [text]="team.abr"></label>  
+            <label [text]="_.upperCase(team.abr)"></label>  
         </StackLayout>
 
         <StackLayout row="4" col="0" horizontalAlignment="center">

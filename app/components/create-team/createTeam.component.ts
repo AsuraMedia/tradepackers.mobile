@@ -3,11 +3,15 @@ import {ModalDialogParams} from "nativescript-angular/modal-dialog";
 import {Page} from "ui/page";
 import { EventsService } from '../../util/event.service'
 import * as Modal from "nativescript-angular/modal-dialog"
-import { CreateTeamService, Badge } from './createTeam.service'
+import { CreateTeamService } from './createTeam.service'
 import { TextField } from 'ui/text-field'
 import { setHintColor } from '../../util/nativeElements'
 import { Color } from 'color'
 import { LoadingModalComponent } from '../loading-modal/loadingModal.component'
+import { Team, Badge } from '../../types'
+import { Http, Response } from '@angular/http'
+import { Router } from "@angular/router"
+import * as _ from 'lodash'
 
 let page: Page, x: number
 
@@ -22,12 +26,14 @@ let page: Page, x: number
 
 export class CreateTeamComponent implements OnInit {
 
+    public _: any = _
     public team: Team = new Team()
     public badges: Badge[]
     @ViewChild("teamNameTxt")   public teamNameTxt   : ElementRef
     @ViewChild("abrTxt")        public abrTxt        : ElementRef
 
     constructor (   private page: Page, 
+                    private router: Router,
                     public eventsService: EventsService,
                     public createTeamService: CreateTeamService,
                     private modalService: Modal.ModalDialogService ) {
@@ -79,19 +85,15 @@ export class CreateTeamComponent implements OnInit {
     }
 
     continue (): void {
+
         LoadingModalComponent.showModal( this.modalService )
-    }
-
-}
-
-export class Team {
-
-    public badge: Badge
-    public name: string
-    public abr: string
-
-    constructor () {
-        this.badge = new Badge('', '', 'res://badgea', '')
+        this.createTeamService.create( this.team )
+            .subscribe( ( response: Response ) => {
+                if ( response.status === 200 ) {
+                    this.eventsService.broadcast( 'loadingModalEvent', 'close' )
+                    this.router.navigate(['/main'])
+                }
+            } )
     }
 
 }

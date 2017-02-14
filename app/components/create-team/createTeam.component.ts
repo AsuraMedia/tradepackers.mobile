@@ -12,6 +12,7 @@ import { Team, Badge } from '../../types'
 import { Http, Response } from '@angular/http'
 import { Router } from "@angular/router"
 import * as _ from 'lodash'
+import * as Rx from 'rxjs/Rx'
 
 let page: Page, x: number
 
@@ -88,6 +89,10 @@ export class CreateTeamComponent implements OnInit {
 
         LoadingModalComponent.showModal( this.modalService )
         this.createTeamService.create( this.team )
+            .catch( ( error: any, caught: Rx.Observable<{}> ) => {
+                console.log( 'ERROR:::', error + ' ' + caught )
+                return Rx.Observable.of( error )
+            } )
             .subscribe( ( response: Response ) => {
                 if ( response.status === 200 ) {
                     this.eventsService.broadcast( 'loadingModalEvent', 'close' )

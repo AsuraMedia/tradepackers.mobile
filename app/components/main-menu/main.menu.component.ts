@@ -9,19 +9,8 @@ import { EventsService } from '../../util/event.service'
 @Component({
     moduleId: module.id,
     selector: 'main-menu',
-    template: 
-        `   <side-drawer>
-                <StackLayout style="width:100%;height:80%;">
-                    <label text="Menu principal" 
-                            horizontalAlignment="center" 
-                            style="color:snow">
-                    </label>
-                </StackLayout>
-            </side-drawer>
-            <StackLayout orientation="vertical" modal-dialog-host>
-            </StackLayout>
-        `, 
-    styleUrls: [],
+    templateUrl: './mainMenu.template.html', 
+    styleUrls: ['./mainMenu.css'],
     directives: [ SideDrawer, Modal.ModalDialogHost ],
     providers: [ Modal.ModalDialogService, EventsService ]
 })

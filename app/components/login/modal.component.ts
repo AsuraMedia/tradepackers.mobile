@@ -8,6 +8,7 @@ import { WebView, LoadEventData } from 'ui/web-view'
 import { LoginService } from './login.service'
 import * as LocalStorage from 'application-settings'
 import {Http, Response} from '@angular/http'
+import { TokenDTO } from '../../dtos'
 
 const updateQueryStringParameter = (uri, key, value) => {
         var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
@@ -73,8 +74,8 @@ export class SocialOauthModal implements OnInit {
                     .subscribe( ( result: Response ) => {
                         const json = result.json()
                         if ( result.status === 200 ) {
-                            const token = json.Token
-                            LocalStorage.setString( 'oauth-token', token )
+                            const tokenDto = new TokenDTO( json )
+                            LocalStorage.setString( 'oauth-token', JSON.stringify( tokenDto ) )
                             page.closeModal()
                         }
                     } )

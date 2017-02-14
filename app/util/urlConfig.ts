@@ -7,11 +7,14 @@ class UrlConfig {
     constructor () {
         this.urlMap.set( 'api', this.baseUrl )
         this.urlMap.set('oauth', `${this.baseUrl}/social`)
-        this.urlMap.set('teamInfo', `${this.baseUrl}/team`)
     }
 
-    getUrl ( key: string ) {
+    public getUrl ( key: string ) {
         return this.urlMap.get( key )
+    }
+
+    public getTeamUrl ( userId: string ): string {
+        return `${this.baseUrl}/user/${userId}/team`
     }
 
 }

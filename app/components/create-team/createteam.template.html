@@ -30,13 +30,13 @@
 
         <StackLayout row="2" col="0" class="credentials" horizontalAlignment="center">
             <TextField #teamNameTxt [(ngModel)]="team.name" hint="nombre de tu equipo"></TextField>
-            <TextField #abrTxt [(ngModel)]="team.abr" hint="abreviatura"></TextField>
+            <TextField #abrTxt [(ngModel)]="team.abbreviation" hint="abreviatura"></TextField>
         </StackLayout>
         
         <StackLayout row="3" col="0" class="upperCase">
             <img id="badge.id" [src]="team.badge.imgUrl" width="75" height="75" class="social"/>
             <label [text]="team.name"></label>
-            <label [text]="_.upperCase(team.abr)"></label>  
+            <label [text]="_.upperCase(team.abbreviation)"></label>  
         </StackLayout>
 
         <StackLayout row="4" col="0" horizontalAlignment="center">

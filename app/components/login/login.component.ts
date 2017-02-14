@@ -59,6 +59,8 @@ constructor (private _router        : Router,
         this._page.on("loaded", this.onLoaded, this)
         LoadingModalComponent.registerListeners( eventsService )
 
+        LocalStorage.clear()
+
     }
     
     ngOnInit () {

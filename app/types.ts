@@ -27,31 +27,44 @@ export interface ErrorMessage {
     value : string
 }
 
-export class Badge {
-
+export class Region {
     public id: string
     public name: string
-    public imgUrl: string
-    public col: string
-    public isSelected: boolean = false
 
-    constructor ( id, name, imgUrl, col ) {
-        this.id = id,
-        this.name = name,
-        this.imgUrl = imgUrl
-        this.col = col
+    constructor ( id, name ) {
+        this.id = id
+        this.name = name
     }
-
 }
 
 export class Team {
 
     public badge: Badge
     public name: string
-    public abr: string
+    public abbreviation: string
+    public dateCreated: string
 
     constructor () {
-        this.badge = new Badge('', '', 'res://badgea', '')
+        this.badge = new Badge('', '', 'res://badgea', '', new Region('1','OCCIDENTE') )
+    }
+
+}
+
+export class Badge {
+
+    public id: string
+    public name: string
+    public region: Region
+    public imgUrl: string
+    public col: string
+    public isSelected: boolean = false
+
+    constructor ( id, name, imgUrl, col, region ) {
+        this.id = id,
+        this.name = name,
+        this.imgUrl = imgUrl
+        this.col = col
+        this.region = region
     }
 
 }

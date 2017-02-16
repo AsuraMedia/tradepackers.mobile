@@ -33,7 +33,7 @@ export class MainMenuComponent implements OnInit, AfterViewInit  {
     }
 
     ngAfterViewInit () {
-        this.getMainInfo()
+        
     }
 
     public onLoaded(args) {

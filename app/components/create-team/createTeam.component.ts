@@ -94,7 +94,7 @@ export class CreateTeamComponent implements OnInit {
                 return Rx.Observable.of( error )
             } )
             .subscribe( ( response: Response ) => {
-                if ( response.status === 200 ) {
+                if ( response ) {
                     this.eventsService.broadcast( 'loadingModalEvent', 'close' )
                     this.router.navigate(['/main'])
                 }

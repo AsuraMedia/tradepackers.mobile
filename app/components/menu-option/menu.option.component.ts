@@ -12,7 +12,7 @@ import MenuOptionFactory from './menu.option.factory'
     moduleId: module.id,
     selector: 'menu-options',
     templateUrl: './menu.option.template.html',
-    styleUrls: ['../side-drawer/side.drawer.css'],
+    styleUrls: ['./menuOption.css'],
     providers : [MenuOptionService],
     directives: [NS_ROUTER_DIRECTIVES]
 })
@@ -45,7 +45,7 @@ export class MenuOptionComponent implements OnInit {
 
         let avatar = this.page.getViewById(id)
             avatar.animate({
-                scale: { x: 1.2, y: 1.2 },
+                scale: { x: 1.1, y: 1.1 },
                 duration: 100,
                 iterations: 2
             })

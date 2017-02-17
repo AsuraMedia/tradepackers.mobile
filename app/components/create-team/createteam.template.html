@@ -1,0 +1,59 @@
+<StackLayout class="create-team-container" horizontalAlignment="center">
+    <GridLayout columns="225, *" 
+                rows="50, 125, 100, 125, 75, *" 
+                width="auto"
+                height="auto">
+        
+        <StackLayout row="0" col="0" class="select-badge-label" horizontalAlignment="center">
+            <label text="selecciona tu insignia"></label> 
+        </StackLayout> 
+        
+        <StackLayout row="1" col="0" horizontalAlignment="center">
+
+            <GridLayout columns="75, 75, 75" 
+                rows="120, 120, *" 
+                width="auto" 
+                height="auto"
+                style="border-width:0;border-color: aqua;">
+
+                <StackLayout *ngFor="let badge of badges"  row="0" [col]="badge.col">
+                    <img id="{{badge.id}}" [src]="badge.imgUrl" width="75" height="75" (tap)="selectBadge(badge)" class="social"/> 
+                </StackLayout>
+
+            </GridLayout>
+
+            <ActivityIndicator
+                [busy]="isAuthenticating"
+                    class="auth-loading"></ActivityIndicator>
+
+        </StackLayout>
+
+        <StackLayout row="2" col="0" class="credentials" horizontalAlignment="center">
+            <TextField #teamNameTxt [(ngModel)]="team.name" hint="nombre de tu equipo"></TextField>
+            <TextField #abrTxt [(ngModel)]="team.abbreviation" hint="abreviatura"></TextField>
+        </StackLayout>
+        
+        <StackLayout row="3" col="0" class="upperCase">
+            <img id="badge.id" [src]="team.badge.imgUrl" width="75" height="75" class="social"/>
+            <label [text]="team.name"></label>
+            <label [text]="_.upperCase(team.abbreviation)"></label>  
+        </StackLayout>
+
+        <StackLayout row="4" col="0" horizontalAlignment="center">
+            <WrapLayout>
+                <StackLayout class="signup">
+                    <button text="continuar" class="continue-btn" (tap)="continue()"></button>
+                </StackLayout>
+                <StackLayout orientation="vertical" modal-dialog-host>
+                </StackLayout>
+            </WrapLayout>
+        </StackLayout>
+    </GridLayout>
+
+    <GridLayout>
+        
+    </GridLayout>
+
+</StackLayout>
+
+<StackLayout orientation="vertical" modal-dialog-host></StackLayout>

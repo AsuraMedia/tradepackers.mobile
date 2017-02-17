@@ -1,0 +1,30 @@
+<StackLayout class="menu-settings">
+    <GridLayout columns="120, 120, 60, *" 
+                rows="75, *" 
+                width="auto" 
+                height="75"
+                style="border-width:0;border-color: #d6d6d6;">
+        
+            <StackLayout row="0" col="0" colSpan="2" 
+                        id="avatar"
+                        class="avatar" 
+                        horizontalAlignment="right" 
+                        verticalAlignment="top"
+                        style="border-width:0;border-color: #d6d6d6;"
+                        (tap)="goToAvatar()">
+                <img [src]="user.avatar"/>
+            </StackLayout>
+
+            <StackLayout row="0" col="0" colSpan="2" style="border-width:0;border-color: #d6d6d6;"></StackLayout>
+
+            <StackLayout row="0" col="0" colSpan="2" 
+                        class="user-info" 
+                        horizontalAlignment="right"
+                        style="border-width:0;border-color: #d6d6d6;">
+                <label [text]="user.userName"></label>
+            </StackLayout>
+
+            <StackLayout row="0" col="3" style="border-width:0;border-color: #d6d6d6;"></StackLayout>
+        
+    </GridLayout>
+</StackLayout>

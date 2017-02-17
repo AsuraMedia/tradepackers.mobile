@@ -1,0 +1,54 @@
+
+<StackLayout height="100%" width="100%">
+    <StackLayout class="register-container" horizontalAlignment="center">
+        <GridLayout id="signup" columns="225, *" 
+                    rows="125, 40, 150, 40, 250, *" 
+                    width="auto" 
+                    height="auto">
+            
+            <StackLayout row="0" col="0" class="logo" horizontalAlignment="center">
+                <img src="res://fedefutlogo" width="125" height="125"/>
+            </StackLayout>
+            
+            <StackLayout row="1" col="0" verticalAlignment="center">
+                <label *ngFor="let error of _signupFactory.errors.list" 
+                        [text]="error" class="errors">
+                </label>
+            </StackLayout>
+
+            <StackLayout row="2" col="0" class="credentials" horizontalAlignment="center">
+
+                <TextField #emailTxt [(ngModel)]="_userFactory.email"
+                            hint="email address"></TextField>
+                <TextField #usernameTxt [(ngModel)]="_userFactory.userName"
+                            hint="username"></TextField>
+                <TextField #passwordTxt [(ngModel)]="_userFactory.password"
+                            secure="true"
+                            hint="password"></TextField>
+                <TextField #passwordRepeatTxt [(ngModel)]="_userFactory.passwordRepeat"
+                            secure="true"
+                            hint="password again"></TextField>
+            </StackLayout>
+            
+            <StackLayout row="3" col="0" horizontalAlignment="center" class="agreement">
+                <label text="Al crear una cuenta con nosotros ud"></label> 
+                <label text="estara de acuerdo con los Terminos" horizontalAlignment="center"></label>
+                <label text="y Condiciones" horizontalAlignment="center"></label>
+                <ActivityIndicator
+                    [busy]="isRegistering"
+                     class="auth-loading">
+                </ActivityIndicator>
+            </StackLayout>
+            
+            <StackLayout row="4" col="0" horizontalAlignment="center">
+                <WrapLayout>
+                    <StackLayout class="cancel">
+                        <button text="register" class="register-btn" (tap)="register(dto)"></button>
+                        <button text="cancel" class="cancel-btn" (tap)="cancel()"></button>
+                    </StackLayout>
+                </WrapLayout>
+            </StackLayout>
+            
+        </GridLayout>
+    </StackLayout>
+</StackLayout>

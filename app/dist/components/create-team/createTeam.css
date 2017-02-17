@@ -1,0 +1,25 @@
+.create-team-container {
+  /*background-color: #565858;*/
+  background-image: url("res://tpbg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 65%;
+}
+
+.select-badge-label {
+    font-size: 14;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
+    width: 200;
+    padding: 20px 0px 0px 0px;
+}
+
+.upperCase {
+  font-size: 16;
+  font-weight: 600;
+  font-family: 'conthrax-sb';
+  color: snow;
+  width: 200;
+}

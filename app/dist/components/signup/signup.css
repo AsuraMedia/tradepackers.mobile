@@ -1,0 +1,73 @@
+.register-container {
+  /*background-color: #026CAD;*/
+  background-image: url("res://tpbg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 65%;
+}
+
+.logo {
+    font-size: 20;
+    font-weight: bold;
+    font-family: 'conthrax-sb';
+    color: snow;
+}
+
+.credentials {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
+    width: 200;
+}
+
+.errors {
+    font-size: 12;
+    font-weight: 600;
+    font-family: 'proximanova-reg';
+    color: #FCDC3B;
+    height: auto;
+    width: 225;
+    text-align: center;
+}
+
+.agreement {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'proximanova-reg';
+    color: snow;
+    height: auto;
+}
+
+.register {
+    padding: 5;
+}
+
+.cancel {
+    padding: 5;
+}
+
+.register-btn {
+    font-size: 14;
+    font-weight: bold;
+    font-family: 'conthrax-sb';
+    color: snow;
+    background-color: #94c949;
+    border-radius: 0 !important;
+    width: 200;
+}
+
+.cancel-btn {
+    font-size: 14;
+    font-weight: bold;
+    font-family: 'conthrax-sb';
+    color: snow;
+    background-color: #3f71b7;
+    border-radius: 0 !important;
+    width: 200;
+}
+
+.auth-loading {
+    color: #94c949;
+}

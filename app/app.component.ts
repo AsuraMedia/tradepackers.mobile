@@ -10,7 +10,8 @@ import {UserService} from '../app/components/user-info/user.service'
   selector: "app",
   directives: [NS_ROUTER_DIRECTIVES],
   template: "<page-router-outlet></page-router-outlet>",
-  providers: [SignupDTO, SignupService, SignupFactory, UserFactory, UserService]
+  providers: [ SignupDTO, SignupService, SignupFactory, UserFactory, UserService ],
+  styleUrls: ['./app.css']
 })
 
 export class AppComponent {}

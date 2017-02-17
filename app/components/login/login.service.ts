@@ -2,6 +2,7 @@ import {Inject, Injectable, EventEmitter} from '@angular/core'
 import {Http, Response} from '@angular/http'
 import {UserFactory} from '../../factories/user.factory'
 import * as Rx from 'rxjs/Rx'
+import * as LocalStorage from 'application-settings'
 
 @Injectable()
 export class LoginService {
@@ -12,6 +13,10 @@ export class LoginService {
     
     constructor (private _http : Http) {
         
+    }
+
+    isAuthenticated () : boolean {
+        return LocalStorage.getString('oauth-token') !== undefined
     }
     
     authenticate (dto : UserFactory) : Rx.Observable<{}> {

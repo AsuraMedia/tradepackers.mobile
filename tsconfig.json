@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": "*",
         "rootDir": "app",
         "module": "commonjs",
         "target": "es5",
@@ -11,6 +12,7 @@
     },
     "exclude": [
         "node_modules",
-        "platforms"
+        "platforms",
+        "node_modules/tns-core-modules"
     ]
 }

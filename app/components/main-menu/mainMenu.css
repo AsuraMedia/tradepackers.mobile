@@ -1,0 +1,45 @@
+.top-bar {
+    background-color: #f5f5f5;
+    width: 345px;
+    height: auto;
+    margin: 8px;
+}
+
+.top-bar label {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: #000;
+}
+
+.metrics {
+    background-color: #f5f5f5;
+    width: 345px;
+    height: 150px;
+    margin: 8px;
+}
+
+.metrics label {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: #000;
+}
+
+.info {
+    background-color: transparent;
+    width: 345px;
+    height: auto;
+    margin: 8px;
+}
+
+.info GridLayout StackLayout {
+    background-color: #f5f5f5;
+}
+
+.info label {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: #000;
+}

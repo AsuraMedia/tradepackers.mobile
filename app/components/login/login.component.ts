@@ -1,4 +1,4 @@
-import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core'
+import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, AfterViewInit } from '@angular/core'
 import {Router} from "@angular/router"
 import { Page } from 'ui/page'
 import { Color } from 'color'
@@ -9,8 +9,6 @@ import {LoginService} from './login.service'
 import {UserFactory} from '../../factories/user.factory'
 import { setHintColor } from '../../util/nativeElements'
 import {Http, Response} from '@angular/http'
-var frameModule = require('ui/frame');
-var pageModule = require('ui/page');
 var webViewModule = require("ui/web-view");
 import { WebView, LoadEventData } from 'ui/web-view'
 import * as Rx from 'rxjs/Rx'
@@ -20,6 +18,7 @@ import { SocialOauthModal } from './modal.component'
 import { LoadingModalComponent } from '../loading-modal/loadingModal.component'
 import * as LocalStorage from 'application-settings'
 import { EventsService } from '../../util/event.service'
+import { urlConfig } from '../../util/urlConfig'
 
 const modalOptions: Modal.ModalDialogOptions = {
     fullscreen: false
@@ -36,7 +35,7 @@ let page: Page
     providers: [ LoginService, Modal.ModalDialogService, EventsService ]
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
     
     public isAuthenticating : boolean
     public heightDIPs       : number
@@ -45,7 +44,7 @@ export class LoginComponent implements OnInit {
     @ViewChild("passwordTxt")   public passwordView   : ElementRef
     @ViewChild("oauthWebView")  public oauthWebView   : WebView
 
-    private baseUrl : string = 'http://tradepackers.asuramedia.com:9000/'
+    private baseUrl : string = urlConfig.getUrl('api')
     
 constructor (private _router        : Router, 
              private _page          : Page, 
@@ -63,6 +62,9 @@ constructor (private _router        : Router,
     }
     
     ngOnInit () {
+
+        LoadingModalComponent.showModal(this.modalService)
+
         this.heightDIPs = screen.mainScreen.heightDIPs
         this.widthDIPs = screen.mainScreen.widthDIPs
         const usernameView = <TextField> this.usernameView.nativeElement
@@ -72,11 +74,21 @@ constructor (private _router        : Router,
 
     }
 
+    ngAfterViewInit () {
+
+        this._http.get('https://jsonplaceholder.typicode.com/photos')
+            .subscribe( ( response: Response ) => {
+                if ( response.status === 200 ) {
+                    if ( this._loginService.isAuthenticated() ) {
+                        this._router.navigate(['/createteam'])
+                    }
+                    this.eventsService.broadcast( 'loadingModalEvent', 'close' )
+                }
+            } )
+    }
+
     public onLoaded(args) {
-        const usernameView = <TextField> this.usernameView.nativeElement
-        const passwordView = <TextField> this.passwordView.nativeElement
-        setHintColor( { view: usernameView, color: new Color('#9f9f9f') } )
-        setHintColor( { view: passwordView, color: new Color('#9f9f9f') } )
+        
     }
 
     login () : void {
@@ -130,7 +142,7 @@ constructor (private _router        : Router,
 
     public getSocialAuthUrl ( provider: string ) : any {
 
-        const redirectUrl = `${this.baseUrl}social/${provider}`
+        const redirectUrl = `${urlConfig.getUrl('oauth')}/${provider}`
         return this._http.get( redirectUrl )
             .catch( (ex) => {
                 return ex
@@ -146,8 +158,9 @@ constructor (private _router        : Router,
                     this.modalService.showModal( SocialOauthModal, modalOptions )
                         .then( ( res ) => {
                             const token = LocalStorage.getString('oauth-token')
+                            console.log('TOKEN::::', token)
                             if ( token !== undefined ) {
-                                this._router.navigate(['/main'])
+                                this._router.navigate(['/createteam'])
                             }
                         } )
                 }

@@ -45,7 +45,7 @@ export class Team {
     public dateCreated: string
 
     constructor () {
-        this.badge = new Badge('', '', 'res://badgea', '', new Region('1','OCCIDENTE') )
+        this.badge = new Badge('', '', 'res://badgea', '', new Region('1','OCCIDENTE'), false )
     }
 
 }
@@ -57,14 +57,15 @@ export class Badge {
     public region: Region
     public imgUrl: string
     public col: string
-    public isSelected: boolean = false
+    public isSelected: boolean
 
-    constructor ( id, name, imgUrl, col, region ) {
+    constructor ( id, name, imgUrl, col, region, isSelected ) {
         this.id = id,
         this.name = name,
         this.imgUrl = imgUrl
         this.col = col
         this.region = region
+        this.isSelected = isSelected
     }
 
 }

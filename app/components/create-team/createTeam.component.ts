@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, NgZone, Inject } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild, NgZone, Inject, AfterViewInit } from "@angular/core";
 import {ModalDialogParams} from "nativescript-angular/modal-dialog";
 import {Page} from "ui/page";
 import { EventsService } from '../../util/event.service'
@@ -25,7 +25,7 @@ let page: Page, x: number
   providers: [ EventsService, Modal.ModalDialogService, CreateTeamService ]
 })
 
-export class CreateTeamComponent implements OnInit {
+export class CreateTeamComponent implements OnInit, AfterViewInit {
 
     public _: any = _
     public team: Team = new Team()
@@ -48,9 +48,24 @@ export class CreateTeamComponent implements OnInit {
 
     ngOnInit () {
 
+    }
+
+    ngAfterViewInit () {
+
         this.createTeamService.getBadges()
             .then( ( result: Badge[] ) => {
                 this.badges = result
+                setTimeout( () => {
+                   this.badges.forEach( ( badge: Badge ) => {
+                    if ( badge.isSelected ) {
+                        let badgeEl = this.page.getViewById( badge.id )
+                        badgeEl.animate({
+                            scale: { x: 1.2, y: 1.2 },
+                            duration: 100
+                        })
+                    }
+                } ) 
+                }, 50);
             } )
     }
 

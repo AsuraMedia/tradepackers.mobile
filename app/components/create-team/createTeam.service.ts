@@ -17,9 +17,9 @@ export class CreateTeamService {
     getBadges (): Promise<Badge[]> {
         return new Promise( ( resolve ) => {
             resolve([
-                new Badge('b1', 'A', 'res://badgea', '0', {}),
-                new Badge('b2', 'B', 'res://badgeb', '1', {}),
-                new Badge('b3', 'C', 'res://badgec', '2', {})
+                new Badge('b1', 'A', 'res://badgea', '0', {}, true),
+                new Badge('b2', 'B', 'res://badgeb', '1', {}, false),
+                new Badge('b3', 'C', 'res://badgec', '2', {}, false)
             ])
         } )
     }

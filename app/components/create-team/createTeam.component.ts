@@ -8,7 +8,7 @@ import { TextField } from 'ui/text-field'
 import { setHintColor } from '../../util/nativeElements'
 import { Color } from 'color'
 import { LoadingModalComponent } from '../loading-modal/loadingModal.component'
-import { Team, Badge } from '../../types'
+import { Team, Badge, Region } from '../../types'
 import { Http, Response } from '@angular/http'
 import { Router } from "@angular/router"
 import * as _ from 'lodash'
@@ -30,6 +30,7 @@ export class CreateTeamComponent implements OnInit, AfterViewInit {
     public _: any = _
     public team: Team = new Team()
     public badges: Badge[]
+    public regions: Region[]
     @ViewChild("teamNameTxt")   public teamNameTxt   : ElementRef
     @ViewChild("abrTxt")        public abrTxt        : ElementRef
 

@@ -27,12 +27,10 @@ export class TeamDTO {
 }
 
 export class BadgeDTO {
-  public  id: string
   public  region: RegionDTO
   public  imgUrl: string
 
   constructor ( badge: Types.Badge ) {
-    this.id = badge.id
     this.imgUrl = badge.imgUrl
     this.region = new RegionDTO( badge.region )
   }
@@ -40,11 +38,9 @@ export class BadgeDTO {
 }
 
 export class RegionDTO {
-  public  id: string
   public  name: string
 
   constructor ( region: Types.Region ) {
-    this.id = region.id
     this.name = region.name
   }
 }

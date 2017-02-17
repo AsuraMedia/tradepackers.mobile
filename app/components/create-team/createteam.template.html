@@ -15,7 +15,7 @@
                 width="auto" 
                 height="auto"
                 style="border-width:0;border-color: aqua;">
-    
+
                 <StackLayout *ngFor="let badge of badges"  row="0" [col]="badge.col">
                     <img id="{{badge.id}}" [src]="badge.imgUrl" width="75" height="75" (tap)="selectBadge(badge)" class="social"/> 
                 </StackLayout>

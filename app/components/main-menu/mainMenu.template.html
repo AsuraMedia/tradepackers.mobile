@@ -2,7 +2,9 @@
     <StackLayout style="width:100%;height:80%;">
         <!-- top bar -->
         <StackLayout class="top-bar">
-            <label text="coins"></label>
+            <label [text]="teamInfo.name"></label>
+            <label [text]="teamInfo.abbreviation"></label>
+            <img [src]="teamInfo.badge.imgUrl" width="25" height="25"/> 
         </StackLayout>
 
         <!-- metrics -->

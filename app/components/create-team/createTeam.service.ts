@@ -1,5 +1,5 @@
 import {Inject, Injectable, EventEmitter} from '@angular/core'
-import {Http, Response} from '@angular/http'
+import {Http, Response, RequestOptionsArgs, Request, Headers} from '@angular/http'
 import * as Rx from 'rxjs/Rx'
 import { TeamDTO, BadgeDTO, RegionDTO } from '../../dtos'
 import { Badge, Team } from '../../types'
@@ -24,11 +24,21 @@ export class CreateTeamService {
         } )
     }
 
+    getRegions (): Rx.Observable<Response> {
+
+        const url = urlConfig.urlMap.get('regions')
+        return this.http.get( url )
+
+    }
+
     create ( team: Team ) : Rx.Observable<Response> {
 
         const teamDto: TeamDTO = new TeamDTO( team )
         const userId = JSON.parse( LocalStorage.getString('oauth-token') ).userId
-        return this.http.post( urlConfig.getTeamUrl( userId ), teamDto )
+        const url = urlConfig.getTeamUrl( userId )
+        let headers = new Headers()
+        headers.append("content-type", "application/json")
+        return this.http.post( url, teamDto, headers )
 
     }
     

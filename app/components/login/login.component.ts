@@ -158,6 +158,7 @@ constructor (private _router        : Router,
                     this.modalService.showModal( SocialOauthModal, modalOptions )
                         .then( ( res ) => {
                             const token = LocalStorage.getString('oauth-token')
+                            console.log('TOKEN::::', token)
                             if ( token !== undefined ) {
                                 this._router.navigate(['/createteam'])
                             }

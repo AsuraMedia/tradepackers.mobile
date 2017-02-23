@@ -27,6 +27,12 @@ export interface ErrorMessage {
     value : string
 }
 
+export interface OAuthInfo {
+    userId: string
+    token: string
+    expirationDate: string
+}
+
 export class Region {
     public id: string
     public name: string

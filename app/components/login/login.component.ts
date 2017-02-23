@@ -19,6 +19,7 @@ import { LoadingModalComponent } from '../loading-modal/loadingModal.component'
 import * as LocalStorage from 'application-settings'
 import { EventsService } from '../../util/event.service'
 import { urlConfig } from '../../util/urlConfig'
+import { TeamService } from '../../services/team.service'
 
 const modalOptions: Modal.ModalDialogOptions = {
     fullscreen: false
@@ -32,7 +33,7 @@ let page: Page
     templateUrl: './login.template.html', 
     styleUrls: ['./login.css'],
     directives: [ Modal.ModalDialogHost ],
-    providers: [ LoginService, Modal.ModalDialogService, EventsService ]
+    providers: [ LoginService, Modal.ModalDialogService, EventsService, TeamService ]
 })
 
 export class LoginComponent implements OnInit, AfterViewInit {
@@ -52,7 +53,8 @@ constructor (private _router        : Router,
              public _userFactory    : UserFactory,
              private _http          : Http,
              private modalService   : Modal.ModalDialogService,
-             private eventsService  : EventsService ) {
+             private eventsService  : EventsService,
+             private teamService    : TeamService ) {
 
         page = this._page                     
         this._page.actionBarHidden = true
@@ -76,15 +78,30 @@ constructor (private _router        : Router,
 
     ngAfterViewInit () {
 
-        this._http.get('https://jsonplaceholder.typicode.com/photos')
-            .subscribe( ( response: Response ) => {
-                if ( response.status === 200 ) {
-                    if ( this._loginService.isAuthenticated() ) {
-                        this._router.navigate(['/createteam'])
-                    }
-                    this.eventsService.broadcast( 'loadingModalEvent', 'close' )
-                }
-            } )
+        setTimeout( () => {
+           const token = LocalStorage.getString('oauth-token') 
+           if ( this._loginService.isAuthenticated() ) {
+                this.teamService.getTeam()
+                    .catch( ( error: Response ) => {
+                        console.log('ERROR::::', JSON.stringify(error))
+                        return Rx.Observable.of( error )
+                    } )
+                    .subscribe( ( response: Response ) => {
+                        console.log('GETEAM::::', JSON.stringify(response))
+                        const data = response.json()
+                        if ( response.status === 200 && data ) {
+                            this.eventsService.broadcast( 'loadingModalEvent', 'close' )
+                            this._router.navigate(['/main'])
+                        } else {
+                            this.eventsService.broadcast( 'loadingModalEvent', 'close' )
+                            this._router.navigate(['/createteam'])
+                        }
+                    } )
+           } else {
+               this.eventsService.broadcast( 'loadingModalEvent', 'close' )
+           }
+        }, 2000)
+
     }
 
     public onLoaded(args) {
@@ -158,7 +175,6 @@ constructor (private _router        : Router,
                     this.modalService.showModal( SocialOauthModal, modalOptions )
                         .then( ( res ) => {
                             const token = LocalStorage.getString('oauth-token')
-                            console.log('TOKEN::::', token)
                             if ( token !== undefined ) {
                                 this._router.navigate(['/createteam'])
                             }

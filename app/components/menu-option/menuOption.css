@@ -1,3 +1,12 @@
 .menuIem {
+    margin-top: 20;
+}
+
+label.option {
+    font-size: 10;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
     margin-top: 10;
+    margin-left: 10;
 }

@@ -19,6 +19,7 @@ export class TeamService {
         const url = urlConfig.getTeamUrl( userId )
         let headers = new Headers()
         headers.append( 'X-AUTH-TOKEN', token )
+        console.log('URL::::::', url)
         console.log('HEADERS::::::', JSON.stringify(headers))
         return this.http.get( url, { headers } )
     }

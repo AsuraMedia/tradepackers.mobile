@@ -111,6 +111,7 @@ export class CreateTeamComponent implements OnInit, AfterViewInit {
             } )
             .subscribe( ( response: Response ) => {
                 if ( response ) {
+                    console.log( 'CREATE TEAM:::', JSON.stringify( response ) )
                     this.eventsService.broadcast( 'loadingModalEvent', 'close' )
                     this.router.navigate(['/main'])
                 }

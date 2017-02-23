@@ -5,12 +5,13 @@ import { TeamDTO, BadgeDTO, RegionDTO } from '../../dtos'
 import { Badge, Team } from '../../types'
 import { urlConfig } from '../../util/urlConfig'
 import * as LocalStorage from 'application-settings'
+import { UserService } from '../../services/user.service'
 
 @Injectable()
 export class CreateTeamService {
     
     
-    constructor (private http : Http) {
+    constructor ( private http : Http, private userService: UserService ) {
         
     }
     
@@ -33,12 +34,13 @@ export class CreateTeamService {
 
     create ( team: Team ) : Rx.Observable<Response> {
 
+        const token = this.userService.getOauthToken()
         const teamDto: TeamDTO = new TeamDTO( team )
-        const userId = JSON.parse( LocalStorage.getString('oauth-token') ).userId
+        const userId = this.userService.getUserId()
         const url = urlConfig.getTeamUrl( userId )
         let headers = new Headers()
-        headers.append("content-type", "application/json")
-        return this.http.post( url, teamDto, headers )
+        headers.append( 'X-AUTH-TOKEN', token )
+        return this.http.post( url, teamDto, { headers } )
 
     }
     

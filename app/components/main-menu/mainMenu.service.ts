@@ -14,14 +14,5 @@ export class MainMenuService {
         
     }
     
-    getTeamInfo () : Rx.Observable<Response> {
-
-        let headers = new Headers()
-        headers.append("content-type", "application/json")
-        const userId = JSON.parse( LocalStorage.getString('oauth-token') ).userId
-        const url = urlConfig.getTeamUrl( userId )
-        return this.http.get( url )
-        
-    }
     
 }

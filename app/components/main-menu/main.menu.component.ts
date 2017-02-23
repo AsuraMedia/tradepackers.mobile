@@ -7,6 +7,7 @@ import * as Modal from "nativescript-angular/modal-dialog"
 import { LoadingModalComponent } from '../loading-modal/loadingModal.component'
 import { EventsService } from '../../util/event.service'
 import { MainMenuService } from './mainMenu.service'
+import { TeamService } from '../../services/team.service'
 import { Team } from '../../types'
 
 @Component({
@@ -15,7 +16,7 @@ import { Team } from '../../types'
     templateUrl: './mainMenu.template.html', 
     styleUrls: ['./mainMenu.css'],
     directives: [ SideDrawer, Modal.ModalDialogHost ],
-    providers: [ Modal.ModalDialogService, EventsService, MainMenuService ]
+    providers: [ Modal.ModalDialogService, EventsService, MainMenuService, TeamService ]
 })
 
 export class MainMenuComponent implements OnInit, AfterViewInit  {
@@ -40,7 +41,8 @@ export class MainMenuComponent implements OnInit, AfterViewInit  {
         private _page : Page,
         private modalService: Modal.ModalDialogService,
         private eventsService  : EventsService,
-        private mainMenuService : MainMenuService ) {
+        private mainMenuService : MainMenuService,
+        private teamService: TeamService ) {
 
         this._page.actionBarHidden = true
         this._page.on("loaded", this.onLoaded, this)
@@ -64,7 +66,7 @@ export class MainMenuComponent implements OnInit, AfterViewInit  {
         
         LoadingModalComponent.showModal( this.modalService )
 
-        this.mainMenuService.getTeamInfo()
+        this.teamService.getTeam()
             .subscribe( ( result: Response ) => {
                 if ( result.status === 200 ) {
                     this.teamInfo = result.json()

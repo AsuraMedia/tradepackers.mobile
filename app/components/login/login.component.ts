@@ -169,7 +169,6 @@ constructor (private _router        : Router,
 
                     this.eventsService.broadcast( 'loadingModalEvent', 'close' )
                     const data = result.json()
-                    this._loginService.webViewUrl = decodeURIComponent( data.url )
                     LocalStorage.setString('webView-url', decodeURIComponent(data.url))
 
                     this.modalService.showModal( SocialOauthModal, modalOptions )

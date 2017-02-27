@@ -1,5 +1,5 @@
 .menuIem {
-    margin-top: 20;
+    margin-bottom: 20;
 }
 
 label.option {
@@ -7,6 +7,4 @@ label.option {
     font-weight: 400;
     font-family: 'conthrax-sb';
     color: snow;
-    margin-top: 10;
-    margin-left: 10;
 }

@@ -4,7 +4,7 @@ import { Page } from 'ui/page'
 import { Color } from 'color'
 import { TextField } from 'ui/text-field'
 import { screen } from "platform"
-import {SignupDTO} from '../../types'
+import { SignupDTO, OAuthInfo } from '../../types'
 import {LoginService} from './login.service'
 import {UserFactory} from '../../factories/user.factory'
 import { setHintColor } from '../../util/nativeElements'
@@ -98,6 +98,7 @@ constructor (private _router        : Router,
                         }
                     } )
            } else {
+               LocalStorage.clear()
                this.eventsService.broadcast( 'loadingModalEvent', 'close' )
            }
         }, 2000)
@@ -173,9 +174,17 @@ constructor (private _router        : Router,
 
                     this.modalService.showModal( SocialOauthModal, modalOptions )
                         .then( ( res ) => {
-                            const token = LocalStorage.getString('oauth-token')
+                            const token: OAuthInfo = JSON.parse( LocalStorage.getString('oauth-token') )
                             if ( token !== undefined ) {
-                                this._router.navigate(['/createteam'])
+                                this.teamService.getTeam()
+                                    .subscribe( ( response: Response ) => {
+                                        const data = response.json()
+                                        if ( response.status === 200 && data ) {
+                                            this._router.navigate(['/main'])
+                                        } else {
+                                            this._router.navigate(['/createteam'])
+                                        }
+                                    } )
                             }
                         } )
                 }

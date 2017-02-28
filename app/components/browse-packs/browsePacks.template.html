@@ -1,30 +1,39 @@
 <side-drawer>
     <StackLayout class="browse-packs-container">
         <GridLayout columns="150, 200, *" 
-                rows="25, 125, 75, 50, *" 
+                rows="25, 125, 75" 
                 width="auto"
                 height="auto"
-                style="border-width:0;border-color: aqua;">
+                style="border-width:0;border-color: aqua;"
+                class="pack-container"
+                *ngFor="let pack of packOptions">
 
             <StackLayout row="0" col="0" rowSpan="3" style="border-width:0;border-color: aqua;"
                 horizontalAlignment="left">
-                <img src="res://gold7pack" width="150" height="250"/>
+                <img [src]="pack.imageUrl" width="150" height="250"/>
             </StackLayout>
         
             <StackLayout row="0" col="1" class="pack-label">
-                <label text="PREMIUM 7"></label>
+                <label [text]="enumToString( pack.type ) + ' ' + pack.totalItems"></label>
             </StackLayout> 
 
             <StackLayout row="1" col="1" class="pack-desc" style="border-width:0;border-color: aqua;">
-                <TextView text="contiene 7 tarjetas en total, almenos 3 raras, entre jugadores y articulos."
+                <TextView [text]="pack.description"
                     style="background-color: transparent; border-color: transparent;"></TextView>
             </StackLayout>
 
             <StackLayout row="2" col="1">
-                <label text="350" class="price"></label>
+                <label [text]="pack.price" class="price"></label>
                 <button text="comprar" class="continue-btn buy-btn" (tap)="buy()"></button>
             </StackLayout>
 
+        </GridLayout>
+        <GridLayout rows="25"
+                    columns="75, 100, 100, 75">
+            <label text="<<<" col="0" row="0"></label>
+            <label text="SOBRES " col="1" row="0" class="selected-packType-prefix"></label>
+            <label [text]="selectedPackType" col="2" row="0" class="selected-packType"></label>
+            <label text=">>>" col="3" row="0"></label>
         </GridLayout>
     </StackLayout>
 </side-drawer>

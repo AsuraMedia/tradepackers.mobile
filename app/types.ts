@@ -75,3 +75,29 @@ export class Badge {
     }
 
 }
+
+export class Pack {
+
+    public id: string
+    public imageUrl: string
+    public type: PackType
+    public totalItems: number
+    public description: string
+    public price: number
+    public cards: any[]
+
+    constructor ( id, imageUrl, type, totalItems, description, price, cards = [] ) {
+        this.id = id,
+        this.imageUrl = imageUrl,
+        this.type = type,
+        this.totalItems = totalItems,
+        this.description = description,
+        this.price = price
+        this.cards = cards
+    }
+}
+
+export enum PackType {
+    BASIC,
+    PLUS
+}

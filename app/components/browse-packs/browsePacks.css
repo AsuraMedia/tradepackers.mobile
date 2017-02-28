@@ -1,0 +1,36 @@
+.browse-packs-container {
+  /*background-color: #565858;*/
+  background-image: url("res://tpbg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 65%;
+}
+
+.pack-label {
+    font-size: 14;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: gold;
+    width: 200;
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+}
+
+.pack-label .totalItems {
+    font-size: 14;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
+    width: 200;
+    text-align: center;
+}
+
+.pack-desc {
+    font-size: 12;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}

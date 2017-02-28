@@ -6,16 +6,8 @@ import {SideDrawer} from '../../components/side-drawer/side.drawer.component'
 @Component({
     moduleId: module.id,
     selector: 'browse-packs',
-    template: 
-        `<side-drawer>
-                <StackLayout style="width:100%;height:80%;">
-                    <label text="Lets browse some packs!" 
-                            horizontalAlignment="center" 
-                            style="color:snow">
-                    </label>
-                </StackLayout>
-            </side-drawer>`, 
-    styleUrls: [],
+    templateUrl: './browsePacks.template.html', 
+    styleUrls: ['./browsePacks.css'],
     directives: [SideDrawer] 
 })
 

@@ -18,9 +18,9 @@ export class CreateTeamService {
     getBadges (): Promise<Badge[]> {
         return new Promise( ( resolve ) => {
             resolve([
-                new Badge('b1', 'A', 'res://badgea', '0', {}, true),
-                new Badge('b2', 'B', 'res://badgeb', '1', {}, false),
-                new Badge('b3', 'C', 'res://badgec', '2', {}, false)
+                new Badge('b1', 'A', 'res://badgea', '0', { id: 1, name: 'OCCIDENTE' }, true),
+                new Badge('b2', 'B', 'res://badgeb', '1', { id: 2, name: 'ORIENTE' }, false),
+                new Badge('b3', 'C', 'res://badgec', '2', { id: 2, name: 'SUR' }, false)
             ])
         } )
     }
@@ -40,6 +40,7 @@ export class CreateTeamService {
         const url = urlConfig.getTeamUrl( userId )
         let headers = new Headers()
         headers.append( 'X-AUTH-TOKEN', token )
+        console.log('TEAM JSON::::', JSON.stringify( teamDto ))
         return this.http.post( url, teamDto, { headers } )
 
     }

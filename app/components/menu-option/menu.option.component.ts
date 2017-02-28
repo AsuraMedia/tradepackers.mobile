@@ -55,6 +55,9 @@ export class MenuOptionComponent implements OnInit {
                         duration: 50
                     })
                 })
+                .then( () => {
+                    this._router.navigate(['/browsepacks'])
+                } )
 
     }
     

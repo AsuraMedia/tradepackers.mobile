@@ -64,7 +64,6 @@ constructor (private _router        : Router,
     }
     
     ngOnInit () {
-
         LoadingModalComponent.showModal(this.modalService)
 
         this.heightDIPs = screen.mainScreen.heightDIPs
@@ -177,6 +176,10 @@ constructor (private _router        : Router,
                             const token: OAuthInfo = JSON.parse( LocalStorage.getString('oauth-token') )
                             if ( token !== undefined ) {
                                 this.teamService.getTeam()
+                                    .catch( ( error: Response ) => {
+                                        console.log('GET TEAM EXCEPTION::::', JSON.stringify(error))
+                                        return Rx.Observable.of( error )
+                                    } )
                                     .subscribe( ( response: Response ) => {
                                         const data = response.json()
                                         if ( response.status === 200 && data ) {

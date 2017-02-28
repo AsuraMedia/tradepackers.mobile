@@ -1,25 +1,28 @@
 <side-drawer>
     <StackLayout class="browse-packs-container">
-        <GridLayout columns="5, 125, 125, 5, *" 
-                rows="75, 125, 125, 125, 75, *" 
+        <GridLayout columns="150, 200, *" 
+                rows="25, 125, 75, 50, *" 
                 width="auto"
-                height="auto">
+                height="auto"
+                style="border-width:0;border-color: aqua;">
+
+            <StackLayout row="0" col="0" rowSpan="3" style="border-width:0;border-color: aqua;"
+                horizontalAlignment="left">
+                <img src="res://gold7pack" width="150" height="250"/>
+            </StackLayout>
         
-            <StackLayout row="0" col="1" colSpan="2" class="pack-label">
-                <label text="SOBRE PREMIUM"></label>
-                <label class="totalItems" text="11 TARJETAS"></label>  
+            <StackLayout row="0" col="1" class="pack-label">
+                <label text="PREMIUM 7"></label>
             </StackLayout> 
 
-            <StackLayout row="1" col="1" colSpan="2" class="pack-desc">
-                <TextView text="contiene 11 articulos, entre ellos comunes y almenos 3 raros entre jugadores y articulos para tu club"></TextView>
+            <StackLayout row="1" col="1" class="pack-desc" style="border-width:0;border-color: aqua;">
+                <TextView text="contiene 7 tarjetas en total, almenos 3 raras, entre jugadores y articulos."
+                    style="background-color: transparent; border-color: transparent;"></TextView>
             </StackLayout>
 
-            <StackLayout row="2" col="1" style="border-width:1;border-color: aqua;">
-                <img src="res://gold11pack" width="125" height="125"/>
-            </StackLayout>
-
-            <StackLayout row="2" col="2" style="border-width:1;border-color: aqua;">
-                <img src="res://gold11pack" width="125" height="125"/>
+            <StackLayout row="2" col="1">
+                <label text="350" class="price"></label>
+                <button text="comprar" class="continue-btn buy-btn" (tap)="buy()"></button>
             </StackLayout>
 
         </GridLayout>

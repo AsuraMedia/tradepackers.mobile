@@ -99,5 +99,6 @@ export class Pack {
 
 export enum PackType {
     BASIC,
-    PLUS
+    PLUS,
+    PREMIUM
 }

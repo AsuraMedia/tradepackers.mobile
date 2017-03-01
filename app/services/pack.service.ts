@@ -18,7 +18,7 @@ export class PackService {
         let packs: Pack[] = [
             new Pack('1', 'res://silver7pack', PackType.BASIC, 7, 'contiene 7 tarjetas en total, almenos 3 raras, entre jugadores y articulos.', 
                 150, []),
-            new Pack('2', 'res://silver11pack', PackType.BASIC, 7, 'contiene 11 tarjetas en total, almenos 5 raras, entre jugadores y articulos.', 
+            new Pack('2', 'res://silver11pack', PackType.BASIC, 11, 'contiene 11 tarjetas en total, almenos 5 raras, entre jugadores y articulos.', 
                 250, []),
             new Pack('3', 'res://gold7pack', PackType.PLUS, 7, 'contiene 7 tarjetas en total, almenos 3 raras, entre jugadores y articulos.', 
                 350, []),

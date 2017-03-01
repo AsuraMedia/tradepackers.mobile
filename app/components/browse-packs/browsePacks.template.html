@@ -1,13 +1,18 @@
 <side-drawer>
+
+    <!--<GridLayout rows="50" columns="75, 100, 100, 75" class="segmented-bar">
+        <label text="<<<" col="0" row="0"></label>
+        <label text="SOBRES " col="1" row="0" class="selected-packType-prefix"></label>
+        <label [text]="selectedPackType" col="2" row="0" class="selected-packType"></label>
+        <label text=">>>" col="3" row="0"></label>
+    </GridLayout>-->
+
+    <SegmentedBar #tabs [items]="packTypes" [selectedIndex]="selectedPackType" class="segmented-bar">
+
+    </SegmentedBar>
+
     <ScrollView horizontalAlignment="stretch">
     <StackLayout class="browse-packs-container">
-        <GridLayout rows="25"
-                    columns="75, 100, 100, 75">
-            <label text="<<<" col="0" row="0"></label>
-            <label text="SOBRES " col="1" row="0" class="selected-packType-prefix"></label>
-            <label [text]="selectedPackType" col="2" row="0" class="selected-packType"></label>
-            <label text=">>>" col="3" row="0"></label>
-        </GridLayout>
         <GridLayout columns="150, 200, *" 
                 rows="25, 125, 75" 
                 width="auto"
@@ -31,7 +36,10 @@
             </StackLayout>
 
             <StackLayout row="2" col="1">
-                <label [text]="pack.price" class="price"></label>
+                <GridLayout rows="20" columns="60, 75, 50">
+                    <img src="res://coins" row="0" col="1" width="25" height="25" horizontalAlignment="left"/>
+                    <label [text]="pack.price" row="0" col="1" class="price"></label>
+                </GridLayout>
                 <button text="comprar" class="continue-btn buy-btn" (tap)="buy()"></button>
             </StackLayout>
 

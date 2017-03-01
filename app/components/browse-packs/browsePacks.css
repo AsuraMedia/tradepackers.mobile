@@ -8,7 +8,7 @@
 }
 
 .pack-container {
-    padding: 10% 0% 0% 0% ;
+    padding: 10% 0% 0% 0%;
 }
 
 .pack-label {
@@ -52,6 +52,7 @@
     color: snow;
     width: 200;
     text-align: center;
+    padding: 0% 0% 0% 20%;
 }
 
 .selected-packType {
@@ -72,4 +73,13 @@
     width: 200;
     text-align: right;
     padding: 5% 0% 0% 0%;
+}
+
+.segmented-bar {
+    background: transparent;
+    background-color: #323232;
+    font-size: 14;
+    font-weight: 400;
+    font-family: 'conthrax-sb';
+    color: snow;
 }

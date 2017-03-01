@@ -23,7 +23,9 @@ export class PackService {
             new Pack('3', 'res://gold7pack', PackType.PLUS, 7, 'contiene 7 tarjetas en total, almenos 3 raras, entre jugadores y articulos.', 
                 350, []),
             new Pack('4', 'res://gold11pack', PackType.PLUS, 11, 'contiene 11 tarjetas en total, almenos 5 raras, entre jugadores y articulos.', 
-                750, [])
+                750, []),
+            new Pack('5', 'res://gold11pack', PackType.PLUS, 24, 'contiene 24 tarjetas en total, almenos 9 raras, entre jugadores y articulos.', 
+                1000, [])
         ]
 
         return Rx.Observable.of( packs.filter( ( pack: Pack ) => { 

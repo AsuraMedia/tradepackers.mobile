@@ -31,9 +31,10 @@ export class BrowsePacksComponent implements OnInit {
                 private router: Router ) {
 
         this._page.actionBarHidden = true
+        this._page.on("loaded", this.onLoaded, this)
     }
-    
-    ngOnInit () {
+
+    public onLoaded(args) {
 
         this.packTypes = [
             { title: PackType[PackType.BASIC] }, 
@@ -47,6 +48,10 @@ export class BrowsePacksComponent implements OnInit {
             this.selectedPackType = args.newIndex
             this.getPackOptions()
         })
+        
+    }
+    
+    ngOnInit () {
         
     }
 

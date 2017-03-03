@@ -54,6 +54,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
     "nativescript-angular": "0.2.0",
+    "nativescript-explosionfield": "^1.0.3",
     "nativescript-telerik-ui": "1.2.0",
     "nativescript-twitterbang": "^1.1.3",
     "reflect-metadata": "0.1.2",

@@ -2,10 +2,10 @@ import { Page } from 'ui/page'
 import * as Rx from 'rxjs/Rx'
 import { Router, Params, ActivatedRoute } from '@angular/router'
 import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, AfterViewInit } from '@angular/core'
-import {SideDrawer} from '../../components/side-drawer/side.drawer.component'
 import { Pack, PackType } from '../../types'
 import { PackService } from '../../services/pack.service'
 import { TwitterBang, ITwitterBangOptions } from 'nativescript-twitterbang'
+const Explosion = require( 'nativescript-explosionfield' )
 
 @Component({
     moduleId: module.id,
@@ -13,12 +13,13 @@ import { TwitterBang, ITwitterBangOptions } from 'nativescript-twitterbang'
     templateUrl: './openPack.template.html', 
     styleUrls: ['./openPack.css'],
     providers: [],
-    directives: [ SideDrawer ] 
+    directives: [] 
 })
 
 export class OpenPackComponent implements OnInit, AfterViewInit {
     
     public pack: Pack = this.packService.currentPack
+    public packsArray: Pack[] = []
     
     constructor ( private _page : Page,
                 private apply: ChangeDetectorRef,
@@ -26,6 +27,13 @@ export class OpenPackComponent implements OnInit, AfterViewInit {
                 private packService: PackService ) {
 
         this._page.actionBarHidden = true
+        this._page.on("loaded", this.onLoaded, this)
+    }
+
+    public onLoaded(args) {
+        this.packsArray = []
+        this.packsArray.push( this.packService.currentPack )
+        this.apply.detectChanges()
     }
     
     ngOnInit () {
@@ -33,9 +41,7 @@ export class OpenPackComponent implements OnInit, AfterViewInit {
     } 
 
     ngAfterViewInit () {
-
         console.log( 'CURRENT PACK:::::', JSON.stringify( this.pack ) )
-
     }
 
     open () {
@@ -57,7 +63,13 @@ export class OpenPackComponent implements OnInit, AfterViewInit {
                 iterations: 8
             })
         } )
-        .then(() => { packElement.translateX = 0 })
+        .then( x => packElement.translateX = 0 )
+        .then( x => Explosion.explode( packElement ) )
+        .then( x => {
+            setTimeout( () => {
+                this.router.navigate(['/browsepacks'])
+            }, 1000)
+        } )
 
     }
 

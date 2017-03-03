@@ -12,7 +12,8 @@ import { PackService } from './services/pack.service'
   selector: "app",
   directives: [NS_ROUTER_DIRECTIVES],
   template: "<page-router-outlet></page-router-outlet>",
-  providers: [ SignupDTO, SignupService, SignupFactory, UserFactory, UserService, User.UserService, PackService ],
+  providers: [ SignupDTO, SignupService, SignupFactory, UserFactory, 
+               UserService, User.UserService, PackService ],
   styleUrls: ['./app.css']
 })
 

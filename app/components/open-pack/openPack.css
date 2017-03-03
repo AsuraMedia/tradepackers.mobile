@@ -1,0 +1,12 @@
+.openPack-container {
+  /*background-color: #565858;*/
+  background-image: url("res://tpbg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 10%;
+}
+
+.openBtn {
+    padding: 5% 5% 5% 5%;
+}

@@ -1,6 +1,8 @@
 import {Page} from 'ui/page'
-import {Router} from '@angular/router'
+import * as Rx from 'rxjs/Rx'
+import { Router, Params } from '@angular/router'
 import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core'
+import { Http, Response, Request, RequestOptions, RequestMethod, Headers } from '@angular/http'
 import {SideDrawer} from '../../components/side-drawer/side.drawer.component'
 import { Pack, PackType } from '../../types'
 import { PackService } from '../../services/pack.service'
@@ -11,7 +13,7 @@ import { SegmentedBar, SegmentedBarItem, SelectedIndexChangedEventData } from 'u
     selector: 'browse-packs',
     templateUrl: './browsePacks.template.html', 
     styleUrls: ['./browsePacks.css'],
-    providers: [ PackService ],
+    providers: [],
     directives: [ SideDrawer ] 
 })
 
@@ -23,7 +25,11 @@ export class BrowsePacksComponent implements OnInit {
     public packOptions: Pack[]
     public selectedPackType: number = PackType.PLUS
 
-    constructor ( private _page : Page, public packService: PackService, private apply: ChangeDetectorRef ) {
+    constructor ( private _page : Page, 
+                public packService: PackService, 
+                private apply: ChangeDetectorRef,
+                private router: Router ) {
+
         this._page.actionBarHidden = true
     }
     
@@ -55,6 +61,21 @@ export class BrowsePacksComponent implements OnInit {
 
     enumToString ( index: number ): string {
         return PackType[index]
+    }
+
+    buy ( pack: Pack ) {
+        this.packService.buyPack( pack )
+            .catch( ( error: Response ) => {
+                return Rx.Observable.of( error )
+            } )
+            .subscribe( ( response: Response ) => {
+                const data = response.json()
+                if ( response.status === 200 ) {
+                    this.router.navigate( ['/openpack'] )
+                } else {
+                    console.log('ERROR::::', JSON.stringify( response ))
+                }
+            } )
     }
     
 }

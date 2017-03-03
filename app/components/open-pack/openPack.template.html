@@ -1,0 +1,13 @@
+<StackLayout class="openPack-container" style="border-width:0;border-color: aqua;">
+    <GridLayout columns="*" rows="125, 250, 25, 75" style="border-width:0;border-color: aqua;">
+
+        <StackLayout col="0" row="1">
+            <img id="packElement" [src]="pack.imageUrl" width="250" height="250"/> 
+        </StackLayout>
+
+        <StackLayout class="openBtn" col="0" row="3">
+            <button id="openBtn" text="Abrir" class="continue-btn" (tap)="open()"></button>
+        </StackLayout>
+
+    </GridLayout>
+</StackLayout>

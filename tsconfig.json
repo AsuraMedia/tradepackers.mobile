@@ -12,7 +12,6 @@
     },
     "exclude": [
         "node_modules",
-        "platforms",
-        "node_modules/tns-core-modules"
+        "platforms"
     ]
 }

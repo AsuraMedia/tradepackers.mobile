@@ -5,6 +5,7 @@ import {MainMenuComponent} from './components/main-menu/main.menu.component'
 import {BrowsePacksComponent} from './components/browse-packs/browse.packs.component'
 import {SignupComponent} from './components/signup/signup.component'
 import { CreateTeamComponent } from './components/create-team/createTeam.component'
+import { OpenPackComponent } from './components/open-pack/openPack.component'
 
 export const routes: RouterConfig = [
   
@@ -12,7 +13,8 @@ export const routes: RouterConfig = [
   { path: "signup", component: SignupComponent },
   { path: "main", component: MainMenuComponent },
   { path: "browsepacks", component: BrowsePacksComponent },
-  { path: "createteam", component: CreateTeamComponent }
+  { path: "createteam", component: CreateTeamComponent },
+  { path: "openpack", component: OpenPackComponent }
   
 ]
 

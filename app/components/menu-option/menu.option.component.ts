@@ -56,7 +56,7 @@ export class MenuOptionComponent implements OnInit {
                     })
                 })
                 .then( () => {
-                    this._router.navigate(['/browsepacks'])
+                    this._router.navigate([ id ])
                 } )
 
     }

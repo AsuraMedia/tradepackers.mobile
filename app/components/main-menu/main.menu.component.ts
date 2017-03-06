@@ -1,4 +1,4 @@
-import { Inject, Injectable, Component, OnInit, ViewChild, AfterViewInit, ViewContainerRef } from '@angular/core'
+import { Inject, Injectable, Component, OnInit, ViewChild, AfterViewInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core'
 import {SideDrawer} from '../side-drawer/side.drawer.component'
 import {Router} from "@angular/router"
 import { Response } from '@angular/http'
@@ -42,7 +42,8 @@ export class MainMenuComponent implements OnInit, AfterViewInit  {
         private modalService: Modal.ModalDialogService,
         private eventsService  : EventsService,
         private mainMenuService : MainMenuService,
-        private teamService: TeamService ) {
+        private teamService: TeamService,
+        private apply: ChangeDetectorRef ) {
 
         this._page.actionBarHidden = true
         this._page.on("loaded", this.onLoaded, this)
@@ -55,11 +56,11 @@ export class MainMenuComponent implements OnInit, AfterViewInit  {
     }
 
     ngAfterViewInit () {
-        this.getMainInfo()
+        
     }
 
     public onLoaded(args) {
-        
+        this.getMainInfo()
     }
 
     public getMainInfo (): void {
@@ -71,7 +72,11 @@ export class MainMenuComponent implements OnInit, AfterViewInit  {
                 if ( result.status === 200 ) {
                     this.teamInfo = result.json()
                     console.log( 'TEAM JSON:::', JSON.stringify( this.teamInfo ) )
-                    this.eventsService.broadcast( 'loadingModalEvent', 'close' )
+                    this.apply.detectChanges()
+
+                    setTimeout( () => {
+                        this.eventsService.broadcast( 'loadingModalEvent', 'close' )
+                    }, 250 )
                 }
             } )
     }

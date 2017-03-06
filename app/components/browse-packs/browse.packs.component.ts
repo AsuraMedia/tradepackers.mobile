@@ -1,7 +1,7 @@
 import {Page} from 'ui/page'
 import * as Rx from 'rxjs/Rx'
 import { Router, Params } from '@angular/router'
-import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core'
+import { Inject, Injectable, Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, AfterViewInit } from '@angular/core'
 import { Http, Response, Request, RequestOptions, RequestMethod, Headers } from '@angular/http'
 import {SideDrawer} from '../../components/side-drawer/side.drawer.component'
 import { Pack, PackType } from '../../types'
@@ -17,13 +17,18 @@ import { SegmentedBar, SegmentedBarItem, SelectedIndexChangedEventData } from 'u
     directives: [ SideDrawer ] 
 })
 
-export class BrowsePacksComponent implements OnInit {
+export class BrowsePacksComponent implements OnInit, AfterViewInit {
     
     @ViewChild("tabs") tabs: ElementRef;
 
-    public packTypes: any[]
+    public packTypes: any[] = [
+        { title: PackType[PackType.BASIC] }, 
+        { title: PackType[PackType.PLUS] }, 
+        { title: PackType[PackType.PREMIUM] }
+    ]
+
     public packOptions: Pack[]
-    public selectedPackType: number = PackType.PLUS
+    public selectedPackType: number = PackType.BASIC
 
     constructor ( private _page : Page, 
                 public packService: PackService, 
@@ -34,20 +39,18 @@ export class BrowsePacksComponent implements OnInit {
         this._page.on("loaded", this.onLoaded, this)
     }
 
-    public onLoaded(args) {
+    public onLoaded( args ) {
 
-        this.packTypes = [
-            { title: PackType[PackType.BASIC] }, 
-            { title: PackType[PackType.PLUS] }, 
-            { title: PackType[PackType.PREMIUM] }
-        ]
-        
         this.getPackOptions()
 
         this.tabs.nativeElement.on( SegmentedBar.selectedIndexChangedEvent, (args: SelectedIndexChangedEventData) => {
             this.selectedPackType = args.newIndex
             this.getPackOptions()
         })
+        
+    }
+
+    ngAfterViewInit () {
         
     }
     

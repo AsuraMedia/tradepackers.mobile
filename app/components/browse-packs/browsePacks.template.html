@@ -4,38 +4,38 @@
     </SegmentedBar>
 
     <ScrollView horizontalAlignment="stretch">
-    <StackLayout class="browse-packs-container">
-        <GridLayout columns="150, 200, *" 
-                rows="25, 125, 75" 
-                width="auto"
-                height="auto"
-                style="border-width:0;border-color: aqua;"
-                class="pack-container"
-                *ngFor="let pack of packOptions">
+        <StackLayout class="browse-packs-container">
+            <GridLayout columns="150, 200, *" 
+                    rows="25, 125, 75" 
+                    width="auto"
+                    height="auto"
+                    style="border-width:0;border-color: aqua;"
+                    class="pack-container"
+                    *ngFor="let pack of packOptions">
 
-            <StackLayout row="0" col="0" rowSpan="3" style="border-width:0;border-color: aqua;"
-                horizontalAlignment="left">
-                <img [src]="pack.imageUrl" width="150" height="250"/>
-            </StackLayout>
-        
-            <StackLayout row="0" col="1" class="pack-label">
-                <label [text]="enumToString( pack.type ) + ' ' + pack.totalItems"></label>
-            </StackLayout> 
+                <StackLayout row="0" col="0" rowSpan="3" style="border-width:0;border-color: aqua;"
+                    horizontalAlignment="left">
+                    <img [src]="pack.imageUrl" width="150" height="250"/>
+                </StackLayout>
+            
+                <StackLayout row="0" col="1" class="pack-label">
+                    <label [text]="enumToString( pack.type ) + ' ' + pack.totalItems"></label>
+                </StackLayout> 
 
-            <StackLayout row="1" col="1" class="pack-desc" style="border-width:0;border-color: aqua;">
-                <TextView [text]="pack.description"
-                    style="background-color: transparent; border-color: transparent;"></TextView>
-            </StackLayout>
+                <StackLayout row="1" col="1" class="pack-desc" style="border-width:0;border-color: aqua;">
+                    <TextView [text]="pack.description"
+                        style="background-color: transparent; border-color: transparent;"></TextView>
+                </StackLayout>
 
-            <StackLayout row="2" col="1">
-                <GridLayout rows="20" columns="60, 75, 50">
-                    <img src="res://coins" row="0" col="1" width="25" height="25" horizontalAlignment="left"/>
-                    <label [text]="pack.price" row="0" col="1" class="price"></label>
-                </GridLayout>
-                <button text="comprar" class="continue-btn buy-btn" (tap)="buy(pack)"></button>
-            </StackLayout>
+                <StackLayout row="2" col="1">
+                    <GridLayout rows="20" columns="60, 75, 50">
+                        <img src="res://coins" row="0" col="1" width="25" height="25" horizontalAlignment="left"/>
+                        <label [text]="pack.price" row="0" col="1" class="price"></label>
+                    </GridLayout>
+                    <button text="comprar" class="continue-btn buy-btn" (tap)="buy(pack)"></button>
+                </StackLayout>
 
-        </GridLayout>
-    </StackLayout>
+            </GridLayout>
+        </StackLayout>
     </ScrollView>
 </side-drawer>

@@ -91,7 +91,7 @@ constructor (private _router        : Router,
                         if ( response.status === 200 && data ) {
                             this.eventsService.broadcast( 'loadingModalEvent', 'close' )
                             this._router.navigate(['/main'])
-                        } else {
+                        } else  if ( response.status === 404 ) {
                             this.eventsService.broadcast( 'loadingModalEvent', 'close' )
                             this._router.navigate(['/createteam'])
                         }

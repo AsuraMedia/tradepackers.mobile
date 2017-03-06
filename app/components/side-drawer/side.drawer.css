@@ -17,6 +17,17 @@ StackLayout .menu-options {
   height: 100%;
 }
 
+.main-menu-container {
+  width:50;
+  height:50;
+}
+
+.main-menu-btn {
+  width: 50;
+  height: 50;
+  padding: 0% 0% 10% 0%;
+}
+
 .fa-menu-options AbsoluteLayout label .fa {
   font-family: 'FontAwesome';
   font-size: 18;

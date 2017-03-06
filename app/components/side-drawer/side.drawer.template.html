@@ -12,12 +12,14 @@
             
             <ng-content></ng-content>
 
-            <StackLayout style="width:125;height:125;" verticalAlignment="center">
-                <Label id="circle-drawer"
-                       text="&#xf111;"
+            <StackLayout class="main-menu-container" verticalAlignment="center">
+                <!--<Label id="circle-drawer"
+                       text="^"
                        (tap)="openDrawer()"
                        horizontalAlignment="center"
-                       left="0" top="0" width="auto" height="auto" class="circle-drawer"></Label>
+                       left="0" top="0" width="auto" height="auto" class="circle-drawer">
+                </Label>-->
+                <img id="circle-drawer" src="res://mainmenu" class="main-menu-btn" (tap)="openDrawer()" />
             </StackLayout>
 
         </StackLayout>

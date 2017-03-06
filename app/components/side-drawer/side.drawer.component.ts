@@ -62,11 +62,11 @@ export class SideDrawer implements OnInit, AfterViewInit {
         let circle = this._page.getViewById('circle-drawer')
             circle.animate({
                 scale: { x: 0, y: 0 },
-                duration: 150
+                duration: 150,
             })
-                .then(() => {
-                    this.drawerComponent.sideDrawer.showDrawer()
-                })
+            .then(() => {
+                this.drawerComponent.sideDrawer.showDrawer()
+            })
         
     }
 
@@ -85,7 +85,7 @@ export class SideDrawer implements OnInit, AfterViewInit {
 
         let circle = this._page.getViewById('circle-drawer')
             circle.animate({
-                scale: { x: 2.5, y: 2.5 },
+                scale: { x: 1, y: 1 },
                 duration: 125
             })
 
